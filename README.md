@@ -6,8 +6,7 @@ Originally created with electronic invitations in mind, especially weddings, Bre
 Built to pair beautifully with full-screen imagery and overlay effects, Brecca is ideal for sites where atmosphere matters. Whether you are showcasing an event, telling a story, or creating a small but memorable web presence, the theme keeps the focus on your content against a striking visual backdrop.
 
 ## Key Features
-
-Brecca includes flexible header navigation options, with four navigation templates to suit sites with different numbers of top-level pages. A dedicated Brecca Nav template neatly centers up to six page links, creating a balanced, polished look.
+A dedicated Brecca Nav template neatly centers up to six page links, creating a balanced, polished look.
 
 The site name is displayed prominently as an H1 and can be styled with a choice of eleven custom Google fonts. Eleven presets are included, primarily changing the site title font and giving you a clean starting point for further customization.
 
