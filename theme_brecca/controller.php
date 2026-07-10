@@ -3,6 +3,7 @@ namespace Concrete\Package\ThemeBrecca;
 
 use Concrete\Core\Package\Package;
 use Concrete\Core\Block\BlockType\BlockType;
+use Concrete\Core\Page\Template as PageTemplate;
 use Concrete\Core\Page\Theme\Theme as PageTheme;
 use Concrete\Package\ThemeBrecca\Src\Juiced;
 
@@ -13,7 +14,7 @@ class Controller extends Package
 
     protected $pkgHandle = 'theme_brecca';
     protected $appVersionRequired = '9.0';
-    protected $pkgVersion = '2.0.0';
+    protected $pkgVersion = '2.0.2';
     protected $pkgAutoloaderRegistries = array(
         'src' => '\Concrete\Package\ThemeBrecca\Src'
     );
@@ -39,7 +40,20 @@ class Controller extends Package
         PageTheme::add('brecca', $pkg);
         BlockType::installBlockTypeFromPackage('tallacmans_background_image', $pkg);
 
+        if (!PageTemplate::getByHandle('about_brecca')) {
+            PageTemplate::add('about_brecca', t('About Brecca'), FILENAME_PAGE_TEMPLATE_DEFAULT_ICON, $pkg);
+        }
+
         return $pkg;
+    }
+
+    public function upgrade()
+    {
+        parent::upgrade();
+
+        if (!PageTemplate::getByHandle('about_brecca')) {
+            PageTemplate::add('about_brecca', t('About Brecca'), FILENAME_PAGE_TEMPLATE_DEFAULT_ICON, $this);
+        }
     }
 
     public function uninstall()
@@ -48,5 +62,10 @@ class Controller extends Package
             $bt->delete();
         }
 
+        if ($pt = PageTemplate::getByHandle('about_brecca')) {
+            $pt->delete();
+        }
+
         parent::uninstall();
     }
+}

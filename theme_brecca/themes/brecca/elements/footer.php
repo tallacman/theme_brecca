@@ -1,17 +1,13 @@
 <?php      defined('C5_EXECUTE') or die("Access Denied."); ?>
 
-<?php     $a = new GlobalArea('Background Image');
-	 if(($a->getTotalBlocksInArea($c) > 0) || ($c->isEditMode())) {
-	 	 echo '<div class="background">';
-		 $a->display($c);
-		 echo '</div>';
-	 } ?>
+
 
     </div> <!--  close .ccm-page     -->
 
 <!--  theme javascripts     -->
 
 
+<?php if (!$c->isEditMode()) { ?>
 <script src="<?php      echo $this->getThemePath();?>/js/unorphanize.jquery.js" type="text/javascript"></script>
 <script src="<?php      echo $this->getThemePath();?>/js/jquery.fittext.js" type="text/javascript"></script>
 
@@ -47,6 +43,7 @@ removeStyles: false,
 brand: ''
 });
 </script>
+<?php } ?>
 <?php      View::element('footer_required'); ?>
 
 </body>

@@ -4,6 +4,7 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use Concrete\Core\File\File;
 use Concrete\Core\Page\Page;
 
+$isEditMode = Page::getCurrentPage()->isEditMode();
 $file = File::getByID((int) ($fID ?? 0));
 if (!$file || $file->isError()) {
     return;
@@ -17,33 +18,35 @@ $backgroundImage = $overlay !== ''
     ? 'linear-gradient(' . $overlay . ', ' . $overlay . '), url(' . $image . ')'
     : 'url(' . $image . ')';
 ?>
-<style>
-    :root {
-        --tallacmans-background-image: <?= $backgroundImage ?>;
-    }
+<?php if (!$isEditMode) { ?>
+    <style>
+        :root {
+            --tallacmans-background-image: <?= $backgroundImage ?>;
+        }
 
-    /* Place the selected image above the page background but behind content */
-    html::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background: var(--tallacmans-background-image);
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        z-index: 0;
-        pointer-events: none;
-        will-change: transform;
-    }
+        /* Place the selected image above the page background but behind content */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: var(--tallacmans-background-image);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            will-change: transform;
+        }
 
-    /* Ensure the main page content sits above the background layer */
-    .ccm-page {
-        position: relative;
-        z-index: 1;
-    }
-</style>
+        /* Ensure the main page content sits above the background layer */
+        .ccm-page {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+<?php } ?>
 
-<?php if (Page::getCurrentPage()->isEditMode()) { ?>
+<?php if ($isEditMode) { ?>
     <div class="tallacmans-background-image alert alert-light border">
         <?= t('Tallacmans Background Image') ?>
         <?php if ($overlay !== '' && $validOverlay) { ?>

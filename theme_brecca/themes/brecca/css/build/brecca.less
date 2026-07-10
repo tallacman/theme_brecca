@@ -133,6 +133,16 @@ div.form-actions button.btn.btn-primary {
 	margin-top: 15px;
 }
 
-#ccm-account-menu {
-	display: none;
+/* Keep Concrete editor drag/drop behavior untouched in edit mode. */
+body.ccm-edit-mode .ccm-page a,
+body.ccm-edit-mode .ccm-page button {
+	touch-action: auto !important;
+}
+
+body.ccm-edit-mode .ccm-page .ui-sortable-handle,
+body.ccm-edit-mode .ccm-page .ccm-block-move,
+body.ccm-edit-mode .ccm-page .ccm-block-control-menu-item-move,
+body.ccm-edit-mode .ccm-page [data-menu-action="move"],
+body.ccm-edit-mode .ccm-page [data-action="move"] {
+	cursor: move !important;
 }
