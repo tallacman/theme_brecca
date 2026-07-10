@@ -1,0 +1,22 @@
+# Installation Instructions
+
+1. Unzip this file in your site's packages/ directory.
+2. Login to your site as an administrator.
+3. Find the "Add Functionality" page in your dashboard.
+4. Find this package in the list of packages awaiting installation.
+5. Click the "install" button.
+6. Find the tool at Dashboard > System & Settings > Image Replacer.
+
+# Usage Notes
+
+- The folder you scan is a path relative to your site's root (the folder
+  that contains index.php), e.g. application/themes/my_theme/images.
+- Only .jpg, .jpeg, and .png files are scanned/replaced.
+- Before a file is overwritten, the original is copied to the same
+  filename with a .bak extension in the same folder (if a .bak doesn't
+  already exist). Use "Restore Selected from Backup" to undo a replacement.
+- Replacement images are always resized/cropped to match the original
+  file's exact pixel dimensions, so no markup or CSS needs to change.
+- Providers: Lorem Picsum and LoremFlickr work with no signup. Unsplash,
+  Pexels, and Pixabay each require a free API key from their developer
+  site, entered in the "API key" field at replacement time.

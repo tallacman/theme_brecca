@@ -1,0 +1,148 @@
+main {
+	padding-bottom: 300px;
+}
+
+.brecca-nav {
+	background-color: @nav-background-color;
+	font-family: @nav-type-font-family;
+	margin: 0;
+	padding: 0;
+}
+
+.brecca-nav li {
+	list-style-type: none;
+}
+
+.brecca-nav a {
+	padding: 12px 0;
+	display: block;
+  color: @nav-type-color  !important;
+	text-align: center;
+
+}
+
+ul.brecca-nav ul {
+	padding: 0;
+  position: absolute;
+  z-index: 100;
+  margin: 0;
+  width: 100%;
+  display: none;
+}
+
+ul.brecca-nav ul li a {
+	padding: 8px !important;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+}
+
+ul.brecca-nav ul ul {
+	top: -5px;
+  width: 100%;
+	right: -100%;
+}
+
+ul.brecca-nav  ul li a:hover {
+	background-color: rgba(0,0,0,1);
+}
+
+ul.brecca-nav li:hover > ul {
+	display: block;
+}
+
+
+.site-name {
+	text-align: center;
+}
+
+/* Spirax, Lobster, Limelight, Playball, Lobster+Two, Abril+Fatface, Megrim, Henny+Penny, Crushed, Cinzel+Decorative */
+
+.site-name h1 {
+	font-family: @sitename-type-font-family;
+	font-size: @sitename-type-font-size;
+	font-weight: @sitename-type-font-weight;
+	margin: 5vh 0;
+	color: @sitename-type-color;
+}
+
+.site-name h1 a {
+	color: @sitename-type-color;
+}
+
+.white-outer-back {
+	background-color: rgba(255, 255, 255, 0.4);
+	box-shadow: 0 0 4px rgba(0,0,0, 0.2);
+}
+
+.white-translucent-background {
+	background-color: rgba(255, 255, 255, 0.8);
+	box-shadow: 0 0 4px rgba(0,0,0, 0.2);
+}
+
+.gutters-all-big {
+	padding: 4em;
+}
+
+@media only screen and (max-width:@screen-sm-min ) {
+
+  .gutters-all-big {
+  	padding: 1em;
+  }
+
+}
+
+.gutters-a {
+	padding: 12px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: inline-block;
+}
+
+.columns {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 2em;
+	-moz-column-gap: 2em;
+	column-gap: 2em;
+}
+
+.columns img {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.columns p:first-of-type {
+	margin-top: 0  !important;
+}
+
+@media only screen and (max-width:569px) {
+
+  .columns {
+  	-webkit-column-count: 1;
+  	-moz-column-count: 1;
+  	column-count: 1;
+  }
+}
+
+div.form-actions button.btn.btn-primary {
+	margin-top: 15px;
+}
+
+/* Keep Concrete editor drag/drop behavior untouched in edit mode. */
+body.ccm-edit-mode .ccm-page a,
+body.ccm-edit-mode .ccm-page button {
+	touch-action: auto !important;
+}
+
+body.ccm-edit-mode .ccm-page .ui-sortable-handle,
+body.ccm-edit-mode .ccm-page .ccm-block-move,
+body.ccm-edit-mode .ccm-page .ccm-block-control-menu-item-move,
+body.ccm-edit-mode .ccm-page [data-menu-action="move"],
+body.ccm-edit-mode .ccm-page [data-action="move"] {
+	cursor: move !important;
+}

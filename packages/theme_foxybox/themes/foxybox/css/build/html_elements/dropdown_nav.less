@@ -1,0 +1,60 @@
+nav a {
+    display: block;
+    text-transform: uppercase;
+    color: @nav-link-color;
+    text-decoration: none;
+    padding: 32px 12px;
+    border-top: solid transparent 3px;
+}
+nav a.nav-path-selected,
+nav a:hover {
+    color: @nav-link-color;
+    border-top: solid @nav-link-hover-color 3px;
+}
+nav ul ul a.nav-path-selected,
+nav ul ul a:hover {
+    color: @dropdown-link-hover-color;
+    border-top: solid transparent 3px;
+    background-color: @dropdown-background-hover-color;
+}
+nav ul,
+nav li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    list-style-type: none;
+}
+nav ul ul a{
+ padding: 12px 12px;
+
+}
+nav li {
+    position: relative;
+}
+nav li ul {
+    position: absolute;
+    width: 250px;
+}
+nav li:hover > ul {
+    display: inline;
+}
+nav ul ul {
+        margin-left: 30px;
+}
+nav ul ul li {
+    width: 100%;
+}
+nav ul ul li a {
+    display: block;
+}
+nav ul ul {
+    display: none;
+    background-color: @dropdown-background-color;
+    position: absolute;
+    left: -28px;
+}
+nav ul ul ul {
+       position: absolute;
+       left: 220px;
+       top: 0;
+}

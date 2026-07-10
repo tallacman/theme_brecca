@@ -1,0 +1,114 @@
+.ccm-page .tallacmans-ticker,
+.tallacmans-ticker {
+  display: block;
+  width: 100%;
+}
+
+.ccm-page .tallacmans-ticker .ttk-wrap,
+.tallacmans-ticker .ttk-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ccm-page .tallacmans-ticker .ttk-wrap *,
+.tallacmans-ticker .ttk-wrap * {
+  box-sizing: border-box;
+}
+
+.ccm-page .tallacmans-ticker .ttk-track,
+.tallacmans-ticker .ttk-track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  will-change: transform;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: ttk-scroll;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+.ccm-page .tallacmans-ticker .ttk-group,
+.tallacmans-ticker .ttk-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.ccm-page .tallacmans-ticker .ttk-item,
+.tallacmans-ticker .ttk-item {
+  display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ccm-page .tallacmans-ticker .ttk-pause-hover:hover .ttk-track,
+.tallacmans-ticker .ttk-pause-hover:hover .ttk-track {
+  animation-play-state: paused;
+}
+
+.ccm-page .tallacmans-ticker .ttk-empty,
+.tallacmans-ticker .ttk-empty {
+  text-align: center;
+  background-color: #eaff78;
+  line-height: 1.8;
+  padding: 0.5rem 1rem;
+}
+
+@keyframes ttk-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ccm-page .tallacmans-ticker.ttk-direction-rtl .ttk-track,
+.tallacmans-ticker.ttk-direction-rtl .ttk-track {
+  animation-name: ttk-scroll-rtl;
+}
+
+@keyframes ttk-scroll-rtl {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ccm-page .tallacmans-ticker .ttk-track,
+  .tallacmans-ticker .ttk-track {
+    animation: none;
+    transform: none;
+    width: 100%;
+    display: block;
+  }
+
+  .ccm-page .tallacmans-ticker .ttk-wrap,
+  .tallacmans-ticker .ttk-wrap {
+    overflow: visible;
+  }
+
+  .ccm-page .tallacmans-ticker .ttk-group,
+  .tallacmans-ticker .ttk-group {
+    display: block;
+    white-space: normal;
+  }
+
+  .ccm-page .tallacmans-ticker .ttk-group-duplicate,
+  .tallacmans-ticker .ttk-group-duplicate {
+    display: none;
+  }
+
+  .ccm-page .tallacmans-ticker .ttk-item,
+  .tallacmans-ticker .ttk-item {
+    display: block;
+    padding: 0.25rem 1rem;
+  }
+}

@@ -1,0 +1,22 @@
+.theme-a-thousand-words {
+    .atw-header {
+        position: sticky;
+        top: 0;
+        z-index: 1030;
+        background-color: $header-bar-background;
+    }
+}
+
+html.ccm-toolbar-visible {
+    .theme-a-thousand-words .atw-header {
+        top: 48px;
+    }
+}
+
+// Keep the sticky header below Concrete's in-context edit overlays (400–700)
+// so existing blocks in the header can be clicked to edit.
+html.ccm-edit-mode {
+    .theme-a-thousand-words .atw-header {
+        z-index: 350;
+    }
+}

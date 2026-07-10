@@ -1,0 +1,66 @@
+.ccm-page .tallacmans-blur-baby,
+.tallacmans-blur-baby {
+  display: block;
+  width: 100%;
+}
+
+.ccm-page .tallacmans-blur-baby .ttbb-wrapper,
+.tallacmans-blur-baby .ttbb-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+
+.ccm-page .tallacmans-blur-baby .ttbb-background,
+.tallacmans-blur-baby .ttbb-background {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  height: var(--ttbb-bg-height, 90%);
+  pointer-events: none;
+}
+
+.ccm-page .tallacmans-blur-baby.ttbb-placement-top .ttbb-background,
+.tallacmans-blur-baby.ttbb-placement-top .ttbb-background {
+  top: 0;
+}
+
+.ccm-page .tallacmans-blur-baby.ttbb-placement-center .ttbb-background,
+.tallacmans-blur-baby.ttbb-placement-center .ttbb-background {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ccm-page .tallacmans-blur-baby.ttbb-placement-bottom .ttbb-background,
+.tallacmans-blur-baby.ttbb-placement-bottom .ttbb-background {
+  bottom: 0;
+}
+
+.ccm-page .tallacmans-blur-baby .ttbb-background img,
+.tallacmans-blur-baby .ttbb-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(var(--ttbb-blur, 15px));
+  transform: scale(var(--ttbb-scale, 1.4));
+}
+
+.ccm-page .tallacmans-blur-baby .ttbb-image,
+.tallacmans-blur-baby .ttbb-image {
+  position: relative;
+  z-index: 1;
+  width: min(var(--ttbb-image-width, 50vw), calc(100% - 2rem));
+  max-width: 100%;
+  margin-inline: max(1rem, 2vw);
+  box-shadow: 2px 5px 14px -4px rgba(0, 0, 0, 0.5);
+}
+
+.ccm-page .tallacmans-blur-baby .ttbb-image img,
+.tallacmans-blur-baby .ttbb-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

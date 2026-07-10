@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
+
+  <table name="btTallacmansImageHr">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="image" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="sizeImage" type="integer">
+      <unsigned/>
+      <default value="110"/>
+    </field>
+    <field name="postitionImage" type="string" size="255"/>
+    <field name="paddingImage" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="borderImage" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="borderColor" type="string" size="7"/>
+    <field name="colorBackg" type="string" size="7"/>
+    <field name="hrStyle" type="string" size="255"/>
+    <field name="heightLine" type="integer">
+      <unsigned/>
+      <default value="1"/>
+    </field>
+    <field name="colorLine" type="string" size="7"/>
+    <field name="blockMarginTop" type="integer">
+      <unsigned/>
+      <default value="80"/>
+    </field>
+    <field name="blockMarginBottom" type="integer">
+      <unsigned/>
+      <default value="80"/>
+    </field>
+    <field name="dropShadowBlur" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="dropShadowColor" type="string" size="7">
+      <default value="#333333"/>
+    </field>
+    <field name="dropShadowOpacity" type="integer">
+      <unsigned/>
+      <default value="35"/>
+    </field>
+  </table>
+
+</schema>

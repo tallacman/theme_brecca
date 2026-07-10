@@ -1,0 +1,130 @@
+@preset-name: "Defaults";
+@preset-icon: concrete-icon(#31618d, #fff, #ff0000);
+@preset-fonts-file: "build/fonts/defaults.less";
+
+/* 1.A Colors */
+@color-primary:#1745d0;  // juiced_helpers.less et al
+@color-alt:#d6ac15 ;  // juiced_helpers.less et al
+
+
+// more colors than here used -- from framework kept for legacy
+        @color-dark: #212121; // juiced_helpers.less     mostly
+        @color-light: #aaaaaa; // juiced_helpers.less     mostly
+        @color-white: #ffffff; // juiced_helpers.less     mostly
+        @color-green: #72de96; // juiced_helpers.less     mostly
+        @color-red: #a8242a; // juiced_helpers.less     mostly
+        @color-blue:  #7093d6; // juiced_helpers.less     mostly
+        @color-yellow: #ffe169; // juiced_helpers.less     mostly
+
+
+// sitename
+
+@sitename-type-font-family: Raleway, sans-serif; //typography.less
+        @sitename-type-font-weight: 400; //typography.less
+        @sitename-type-font-leading-size: 1.1; //typography.less
+        @sitename-type-color: #fff; //typography.less
+        @sitename-type-font-size: 24px; //typography.less
+
+// header items incl nav
+
+@header-background-color: #333 ;  // theme.less
+
+	@header-sitename-color:  #ffffff;    //typography.less
+	@header-sitename-hover-color: #70d6ec;    //typography.less
+
+	@header-nav-link-color: #ffffff; // nav.less
+	@header-nav-link-hover-color: #70d6ec; // nav.less
+	@header-nav-link-background-color: rgba(255, 255, 255, 0.0); // nav.less
+	@header-nav-link-background-hover-color: rgba(255, 255, 255, 0.0); // nav.less
+
+//------------------------------------------
+
+@nav-background-color: rgba(255, 255, 255, 0.0); // nav.less
+
+	@dropdown-nav-link-color:#fff;  // nav.less
+	@dropdown-nav-link-hover-color: #70d6ec;  // nav.less
+	@dropdown-nav-link-background-color: #222; // nav.less
+	@dropdown-nav-link-background-hover-color:  #333;  // nav.less
+
+//------------------------------------------
+
+@main-background-color: #ffffff;
+
+	@main-link-color: #687a95;  //typography.less
+	@main-link-hover-color:  #2d7d96;  //typography.less
+	@main-link-decoration:  none;
+	@main-link-hover-decoration:  none;
+
+//------------------------------------------
+@footer-background-color:  #223333; // theme.less
+
+        @footer-type-font-color:#fff; // theme.less
+        @footer-type-header-color:#aaa; // theme.less
+
+	@footer-link-color: #75d7ec; // theme.less
+	@footer-link-hover-color: #459bad; // theme.less
+
+
+// utilities added by tallacman
+@gutters: 25px; // juiced_grid.less  \\ abstracted from base grid code
+@border-radius: 4px; // juiced_components.less  \\ abstracted from base grid code
+@padding-margins: @gutters * 2; // theme.less  ||  for vertical spacing elements
+@box-shadow: 2px 1px 5px rgba(45,45,45, 0.3)  ;  // page_list.less
+// Breadkpoints
+@screen-xs-min: 480px;  // breakpoints.less
+@screen-sm-min: 768px;  // breakpoints.less
+@screen-md-min: 992px;  // breakpoints.less
+@screen-lg-min: 1200px;  // breakpoints.less
+@container-max-width: 1200px;  // juiced-grid.less
+
+// header font variables
+@header-type-font-family: Raleway, sans-serif; //typography.less
+        @header-type-font-weight: 400; //typography.less
+        @header-type-font-leading-size: 1.1; //typography.less
+        @header-type-color: #111111; //typography.less
+        @header-type-font-size: 24px; //typography.less
+
+// header font sizes
+@h1-font-size: @header-type-font-size;   //typography.less
+@h2-font-size: @header-type-font-size * 0.9;  // computed // theme.less
+@h3-font-size: @header-type-font-size * 0.85; // computed
+@h4-font-size: @header-type-font-size * 0.8; // computed
+@h5-font-size: @header-type-font-size * 0.7; // computed
+@h6-font-size: @header-type-font-size * 0.6; // computed
+
+// body font variables
+@body-type-font-family: Raleway, sans-serif; //typography.less
+        @body-type-font-size: 16px; //typography.less
+        @body-type-font-leading-size: 1.75; //typography.less
+        @body-type-color: #212121; //typography.less
+
+// button styles
+@button-border-color: rgba(255, 255, 255, 0.0) ;
+@button-background-color: #223333;
+@button-text-color: #fff;
+
+@button-border-hover-color: rgba(255, 255, 255, 0.0) ;
+@button-background-hover-color: #70d6ec;
+@button-text-hover-color: #000;
+
+
+// slicknav styles
+@mobile-menu-activation-size: 767px;   // slicknav.less
+
+@slicknav-background-color: @header-background-color;   // slicknav.less
+@slicknav-sitename-color: @header-sitename-color;   // slicknav.less
+
+@slicknav-bottom-border: @color-light;   // slicknav.less
+
+@slicknav-button-color: @header-background-color;   // slicknav.less
+@slicknav-button-text-color: @color-white;   // slicknav.less
+
+@slicknav-background-hover-color: @color-dark;   // slicknav.less
+@slicknav-nav-link-color: @color-white;   // slicknav.less
+@slicknav-link-hover-color: @color-white;   // slicknav.less
+
+
+
+
+
+///

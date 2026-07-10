@@ -1,0 +1,152 @@
+body .ccm-page {
+    font-size: @body-type-font-size;
+    font-family: @body-type-font-family;
+    font-weight: @body-type-font-weight;
+    line-height: @body-type-font-line-height;
+    color: @body-type-color;
+}
+.ccm-page {
+    * {
+        box-sizing: border-box;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: @header-type-font-family;
+        font-weight: @header-type-font-weight;
+        line-height: @header-type-font-line-height;
+        color: @header-type-color;
+
+
+        margin-top: 0.5em;
+        margin-bottom: 0.8rem;
+    }
+    h1 {
+        font-size: @h1-font-size;
+    }
+    h2 {
+        font-size: @h2-font-size;
+    }
+    h3 {
+        font-size: @h3-font-size;
+    }
+    h4 {
+        font-size: @h4-font-size;
+    }
+    h5 {
+        font-size: @h5-font-size;
+    }
+    h6 {
+        font-size: @h6-font-size;
+    }
+    a {
+        touch-action: manipulation; // i have no idea what this is for
+    }
+    // nav links
+    // all nav elements moved to build > html elements > dropdown nav
+
+    // main link styles
+    main a:visited,
+    main a:link {
+        color: @body-type-color;
+        text-decoration: underline;
+    }
+    main a.nav-selected,
+    main a:hover,
+    main a:focus {
+        color: darken(@body-type-color, 8%);
+        text-decoration: none;
+    }
+    a:active {
+        outline: none;
+    }
+
+
+    // havent done didilly with these cept the p
+
+    dl {
+        margin-left: 1em;
+    }
+    dt {
+        font-weight: bold;
+    }
+    pre {
+        background: #f7f7f7;
+        white-space: pre-line;
+        padding: 12px;
+        border-radius: 3px;
+        font-size: 0.85rem;
+        max-width: 100%;
+        margin-bottom: 2.8rem;
+        position: relative;
+    }
+    pre:after {
+        content: attr(data-code-type);
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        color: #969696;
+        font-family: sans-serif;
+        font-weight: 900;
+    }
+    blockquote {
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "“" "”" "‘" "’";
+    }
+    blockquote:before {
+        color: #c4c4c4;
+        content: open-quote;
+        font-size: 3em;
+        line-height: 0.1em;
+        margin-right: 0.12em;
+        vertical-align: -0.3em;
+    }
+    blockquote p {
+        display: inline;
+    }
+    p {
+        margin-bottom: 1rem;
+    }
+    fieldset{
+      padding: 0;
+      border: none;
+    }
+    div.ccm-block-page-list-title a {
+	text-decoration: none  !important ;
+	font-weight: bold;
+	letter-spacing: .5px;
+}
+
+div.ccm-block-page-list-date {
+	font-size: small;
+	font-style: italic;
+}
+
+ol.breadcrumb {
+	padding: 0;
+	list-style-type: none;
+}
+ol.breadcrumb li{
+	display: inline-block;
+	padding-right: 12px;
+}
+ol.breadcrumb a{
+	text-decoration: none  !important ;
+}
+
+div.ccm-block-date-navigation-wrapper ul,
+div.ccm-block-topic-list-wrapper ul {
+	list-style-type: none;
+	padding: 0;
+
+}
+
+div.ccm-block-date-navigation-wrapper a,
+div.ccm-block-topic-list-wrapper a {
+	text-decoration: none  !important ;
+	}
+}

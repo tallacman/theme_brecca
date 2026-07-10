@@ -1,0 +1,26 @@
+select#selectnav1.selectnav {
+	background-color: white;
+	font-size: 1.3em;
+	border: 1px solid silver;
+	width: 100%;
+}
+
+select#selectnav1.selectnav {
+	background-color: white;
+	font-size: 1.1em;
+	border: 1px solid silver;
+	width: 100%;
+	display: none;
+
+}
+
+@media (max-width: 768px){
+
+select#selectnav1.selectnav{
+
+	display: block;
+}
+#nav{
+	 display: none;
+}
+}

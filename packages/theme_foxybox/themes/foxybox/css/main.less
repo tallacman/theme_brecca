@@ -1,0 +1,27 @@
+@import "presets/defaults.less";
+@import ~"@{preset-fonts-file}";
+@import "build/local_resets.less";
+@import "build/normalizer/normalizer.less";
+.ccm-page {
+    // framework
+    @import "build/juiced_framework/juiced.less";
+    @import "build/juiced_framework/juiced_extras.less";
+    // core
+    @import "build/core/image_slider.less";
+    @import "build/core/blog_entry_list.less";
+    @import "build/core/testimonial.less";
+    // @import "build/core/social_links.less";
+    // html elements
+    @import "build/html_elements/forms.less";
+    @import "build/html_elements/dropdown_nav.less";
+    @import "build/theme.less";
+}
+// end ccm-page
+@import "build/html_elements/typography.less"; // pre escaped with .ccm-page
+@import "build/slicknav.less";
+
+
+div.col-auto.sitename {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}

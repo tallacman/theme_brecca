@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
+
+  <table name="btTallacmansLeadFeature">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="Image" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="Align" type="string" size="35"/>
+    <field name="Height" type="string" size="12"/>
+    <field name="ScrollBehaviour" type="string" size="12"/>
+    <field name="Overlay" type="string" size="25"/>
+    <field name="LeadText" type="text"/>
+    <field name="LeadAnimation" type="string" size="35"/>
+    <field name="LeadSpeed" type="string" size="12"/>
+    <field name="LeadDelay" type="string" size="12"/>
+    <field name="SecondaryText" type="text"/>
+    <field name="SecondaryAnimation" type="string" size="35"/>
+    <field name="SecondarySpeed" type="string" size="12"/>
+    <field name="SecondaryDelay" type="string" size="12"/>
+    <field name="ShowArrow" type="string" size="2"/>
+    <field name="ChevronColor" type="string" size="25"/>
+  </table>
+
+</schema>

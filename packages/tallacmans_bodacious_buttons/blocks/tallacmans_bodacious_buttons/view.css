@@ -1,0 +1,18 @@
+.tbb-button-wrapper {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.tbb-button {
+    margin: 0;
+}
+
+.tbb-button-custom {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    border-style: solid;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, border-width 0.15s ease-in-out;
+}

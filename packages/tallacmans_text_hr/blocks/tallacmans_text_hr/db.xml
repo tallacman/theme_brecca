@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
+
+  <table name="btTallacmansTextHr">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="textDisplay" type="string" size="255"/>
+    <field name="postitionText" type="string" size="255"/>
+    <field name="textColor" type="string" size="7"/>
+    <field name="colorBackg" type="string" size="7"/>
+    <field name="textBorder" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="textBorderShape" type="string" size="255"/>
+    <field name="colorLine" type="string" size="7"/>
+    <field name="hrStyle" type="string" size="255"/>
+    <field name="heightLine" type="integer">
+      <unsigned/>
+      <default value="1"/>
+    </field>
+    <field name="fontFamily" type="string" size="255"/>
+    <field name="fontFamilyCustom" type="string" size="255"/>
+    <field name="fontSize" type="integer">
+      <unsigned/>
+      <default value="16"/>
+    </field>
+    <field name="fontWeight" type="string" size="10">
+      <default value="400"/>
+    </field>
+    <field name="letterSpacing" type="string" size="10">
+      <default value="0"/>
+    </field>
+    <field name="blockMarginTop" type="integer">
+      <unsigned/>
+      <default value="33"/>
+    </field>
+    <field name="blockMarginBottom" type="integer">
+      <unsigned/>
+      <default value="33"/>
+    </field>
+    <field name="dropShadowBlur" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="dropShadowColor" type="string" size="7">
+      <default value="#333333"/>
+    </field>
+    <field name="dropShadowOpacity" type="integer">
+      <unsigned/>
+      <default value="35"/>
+    </field>
+    <field name="textSize" type="string" size="255"/>
+    <field name="textLeading" type="string" size="255"/>
+    <field name="textWeight" type="string" size="255"/>
+  </table>
+
+</schema>

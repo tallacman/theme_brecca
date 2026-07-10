@@ -1,0 +1,313 @@
+/*!
+ * Juiced (http://juicedcss.com)
+ * Copyright 2015 Joey Lea
+ * Licensed under MIT (https://github.com/ovdojoey/Juiced/blob/master/LICENSE)
+*/
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    font-size: 0.95rem;
+    margin-bottom: 1.4rem;
+    position: relative;
+}
+.alert.alert-sm {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+.alert.alert-lg {
+    padding: 16px;
+    font-size: 1.2rem;
+}
+.alert > .alert-exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    padding: 0 5px;
+    margin: -1px;
+    height: 1em;
+    font-size: 1.2em;
+    line-height: 1em;
+    opacity: 0.6;
+    color: inherit;
+    text-decoration: none;
+}
+.alert > .alert-exit:hover {
+    opacity: 1;
+}
+.alert.alert-red {
+    background: @color-red;
+    color: white;
+    border-color: transparent;
+}
+.alert.alert-green {
+    background: @color-green;
+    color: #f0fdf4;
+    border-color: transparent;
+}
+.alert.alert-blue {
+    background: @color-blue;
+    color: white;
+    border-color: transparent;
+}
+.alert.alert-yellow {
+    background: @color-yellow;
+    color: #413402;
+    border-color: transparent;
+}
+.alert.alert-plain {
+    background: transparent;
+    border-color: transparent;
+    color: inherit;
+}
+
+/* 3.B */
+.btn {
+    padding: 10px 16px;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    touch-action: manipulation;
+}
+.btn.radius {
+    border-radius: 5px;
+}
+.btn.btn-lg {
+    padding: 16px 24px;
+    font-size: 1.2rem;
+}
+.btn.btn-sm {
+    padding: 6px;
+    font-size: 0.9rem;
+}
+.btn.btn-pill {
+    border-radius: 20px;
+}
+.btn.btn-outline {
+    background: transparent;
+    border: 1px solid;
+}
+.btn.btn-outline.btn-outline-thick {
+    border: 2px solid;
+}
+.btn.btn-block {
+    width: 100%;
+}
+.btn.btn-block + .btn-block {
+    border-top-color: transparent;
+}
+.card-masonry-1 > .card,
+.card-masonry-2 > .card,
+.card-masonry-3 > .card,
+.card-masonry-4 > .card,
+.xs-card-masonry-1 > .card,
+.xs-card-masonry-2 > .card,
+.xs-card-masonry-3 > .card,
+.xs-card-masonry-4 > .card,
+.sm-card-masonry-1 > .card,
+.sm-card-masonry-2 > .card,
+.sm-card-masonry-3 > .card,
+.sm-card-masonry-4 > .card,
+.md-card-masonry-1 > .card,
+.md-card-masonry-2 > .card,
+.md-card-masonry-3 > .card,
+.md-card-masonry-4 > .card,
+.lg-card-masonry-1 > .card,
+.lg-card-masonry-2 > .card,
+.lg-card-masonry-3 > .card,
+.lg-card-masonry-4 > .card {
+    max-width: 360px;
+}
+.card-masonry-4 {
+    column-count: 4;
+}
+.card-masonry-3 {
+    column-count: 3;
+}
+.card-masonry-2 {
+    column-count: 2;
+}
+.card-masonry-1 {
+    column-count: 1;
+}
+.card {
+    width: 100%;
+    border: 1px solid #aaa;
+    margin: 16px auto;
+    display: inline-block;
+}
+.card.radius {
+    border-radius: @border-radius;
+}
+.card.no-border {
+    border: 0;
+}
+.card.radius.no-border {
+    border-radius: @border-radius;
+}
+.card.radius.no-border .card-header,
+.card.radius.no-border .card-content:first-of-type {
+    border-top-right-radius: @border-radius;
+    border-top-left-radius: @border-radius;
+}
+.card.radius.no-border .card-footer,
+.card.radius.no-border .card-content:last-of-type {
+    border-bottom-right-radius: @border-radius;
+    border-bottom-left-radius: @border-radius;
+}
+.card .card-img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    vertical-align: middle;
+}
+.card .card-content,
+.card.card-content {
+    padding: 16px;
+}
+.card .card-header,
+.card .card-footer {
+    padding: 22px 16px;
+}
+.card .card-header h1,
+.card .card-header h2,
+.card .card-header h3,
+.card .card-header h4,
+.card .card-header h5,
+.card .card-header h6,
+.card .card-footer h1,
+.card .card-footer h2,
+.card .card-footer h3,
+.card .card-footer h4,
+.card .card-footer h5,
+.card .card-footer h6 {
+    margin: 5px 0;
+}
+.card .card-header h1 ~ p,
+.card .card-header h2 ~ p,
+.card .card-header h3 ~ p,
+.card .card-header h4 ~ p,
+.card .card-header h5 ~ p,
+.card .card-header h6 ~ p,
+.card .card-footer h1 ~ p,
+.card .card-footer h2 ~ p,
+.card .card-footer h3 ~ p,
+.card .card-footer h4 ~ p,
+.card .card-footer h5 ~ p,
+.card .card-footer h6 ~ p {
+    margin: 0;
+}
+.card .card-header.no-border,
+.card .card-footer.no-border {
+    border: 0;
+}
+.card .card-header {
+    border-bottom: 1px solid #dddddd;
+}
+.card .card-footer {
+    border-top: 1px solid #dddddd;
+}
+input[type=radio],
+input[type=checkbox] {
+    font-size: 1rem;
+}
+input[type=radio][disabled],
+input[type=checkbox][disabled] {
+    cursor: not-allowed;
+}
+input[type=radio].switch,
+input[type=checkbox].switch {
+    display: none;
+    position: absolute;
+}
+.switch {
+    display: inline-block;
+    height: 1.75rem;
+    user-select: none;
+    border: 1px solid transparent;
+    text-indent: 4.4rem;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    min-width: 4.5rem;
+}
+.switch:before {
+    display: block;
+    content: '';
+    height: 1.8rem;
+    width: 4rem;
+    left: 0;
+    top: 0;
+    position: absolute;
+    border: 1px solid #aaa;
+    transition: all 0.4s;
+}
+.switch:after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 1.3rem;
+    width: 1.3rem;
+    top: 0.25rem;
+    left: 0.25rem;
+    transition: left 0.4s;
+    z-index: 1;
+    background: #aaa;
+    border: 1px solid transparent;
+}
+.switch.outline:after {
+    border: 1px solid #b7b7b7;
+    background: transparent;
+}
+.switch.radius {
+    border-radius: 16px;
+}
+.switch.radius:before {
+    border-radius: 16px;
+}
+.switch.radius:after {
+    border-radius: 2rem;
+    height: 1.3rem;
+    width: 1.3rem;
+    top: 0.25rem;
+}
+.switch:checked + .switch:before {
+    background: @color-blue;
+    border-color: transparent;
+}
+.switch:checked + .switch:after {
+    left: calc(4rem - 1.6rem);
+    border-color: transparent;
+    background: #fff;
+}
+label input {
+    margin-top: 6px;
+}
+.form-control {
+    width: 100%;
+    border: none;
+    padding: 6px 12px;
+    display: block;
+    border: 1px solid #dddddd;
+    transition: box-shadow 0.4s, border-color 0.2s;
+    font-size: 1rem;
+    outline: none;
+    line-height: inherit;
+}
+.form-control.radius {
+    border-radius: 4px;
+}
+.form-control:focus {
+    box-shadow: 0 0 8px #a1a1a1;
+    border-color: @color-blue;
+}
+.form-control option {
+    font-size: 1rem;
+}
+
+/* 4. Helper Classes  */

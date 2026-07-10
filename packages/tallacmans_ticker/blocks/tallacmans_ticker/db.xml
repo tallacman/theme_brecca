@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd">
+  <table name="btTallacmansTicker">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="items" type="text" size="65535"/>
+    <field name="colorBack" type="string" size="25"/>
+    <field name="colorText" type="string" size="25"/>
+    <field name="speed" type="string" size="8"/>
+    <field name="fontSize" type="string" size="8"/>
+    <field name="sizeUnit" type="string" size="12"/>
+    <field name="fontStyle" type="string" size="12"/>
+    <field name="scrollDirection" type="string" size="8"/>
+    <field name="pauseOnHover" type="string" size="4"/>
+    <field name="textShadowColor" type="string" size="35"/>
+    <field name="textShadowBlur" type="string" size="8"/>
+    <field name="textShadowOffsetX" type="string" size="8"/>
+    <field name="textShadowOffsetY" type="string" size="8"/>
+    <field name="itemSpacing" type="string" size="8"/>
+  </table>
+</schema>

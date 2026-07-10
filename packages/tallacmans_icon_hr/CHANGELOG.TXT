@@ -1,0 +1,7 @@
+2.0.5 - July 1, 2026 - replaced core Vue icon selector with standalone visual icon picker (TomSelect + Font Awesome glyphs)
+2.0.4 - July 1, 2026 - fixed icon picker dropdown; moved picker above side-by-side editor to avoid dialog clipping
+2.0.3 - July 1, 2026 - fixed icon picker not mounting (selector ID / core Vue initialization pattern)
+2.0.2 - July 1, 2026 - fixed icon picker not appearing in block editor; removed background color from icon
+2.0.1 - July 1, 2026 - verified all PHP files pass the Concrete CMS c5:phpcs linter
+2.0.0 - July 1, 2026 - rewrote for Concrete CMS 9; side-by-side editor with live preview; px inputs; drop shadow; native color inputs; legacy migrations
+1.0.4 - legacy Concrete CMS 8 release

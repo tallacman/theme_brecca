@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
+
+  <table name="btTallacmansCopyright">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="copyrightStart" type="string" size="4"/>
+    <field name="copyrightHolder" type="string" size="70"/>
+    <field name="fontFamily" type="string" size="255"/>
+    <field name="fontFamilyCustom" type="string" size="255"/>
+    <field name="fontSize" type="integer">
+      <unsigned/>
+      <default value="14"/>
+    </field>
+    <field name="fontWeight" type="string" size="10">
+      <default value="400"/>
+    </field>
+    <field name="textColor" type="string" size="7"/>
+    <field name="blockPaddingTop" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="blockPaddingBottom" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+  </table>
+
+</schema>

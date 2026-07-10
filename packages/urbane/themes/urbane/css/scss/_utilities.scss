@@ -1,0 +1,48 @@
+.ccm-page {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .full-height {
+    min-height: 100vh;
+  }
+
+  div.ccm-panel-content menu,
+  div.ccm-panel-content ul.nav {
+    display: block;
+  }
+}
+
+#ccm-theme-grid-edit-mode-row-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.ccm-edit-mode-block-menu.popover,
+.popover {
+  visibility: visible;
+}
+
+#ccm-account-menu,
+#ccm-account-menu a {
+  display: none;
+}
+
+ul#menu.slicknav-one {
+  margin: 0;
+}
+
+#slicknav {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .slicknav-hide {
+    display: none !important;
+  }
+
+  #slicknav {
+    display: block;
+  }
+}

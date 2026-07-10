@@ -1,0 +1,9 @@
+# Tallacmans Site Name Installation
+
+Requires Concrete CMS 9.3 or newer.
+
+1. Copy the tallacmans_sitename directory into the site's packages directory.
+2. Open Dashboard > Extend Concrete > Add Functionality.
+3. Install or update Tallacmans Site Name.
+4. Add the block to an area and open its settings to choose the site name,
+   logo, alignment, text color, font family, and font size.

@@ -1,0 +1,109 @@
+/* this theme css gets called by the main.less on publish */
+header {
+	height: 200px;
+	background-color: @header-background-color;
+}
+.sitename p{
+	margin: 0  ;
+	padding: 0;
+}
+
+main {
+	padding: 0 0 @padding-margins;
+	background-color: @main-background-color;
+}
+
+.edgetoedge {
+	padding: 0 0 @padding-margins;
+}
+
+.edgetoedge img {
+	width: 100%;
+}
+
+footer {
+	font-size: 90% !important;
+	background-color: @footer-background-color;
+	color: @footer-type-font-color;
+	padding: @padding-margins 0;
+}
+
+footer p {
+	margin: 0 0 8px !important;
+}
+
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6 {
+	color: @footer-type-header-color;
+}
+
+footer a {
+	color: @footer-link-color;
+}
+
+footer a:hover {
+	color: @footer-link-hover-color;
+}
+
+footer ul.nav {
+	list-style-type: none;
+	padding: 0;
+	margin-top: 0;
+}
+
+footer ul.nav a {
+	display: block;
+	padding: 3px 0 3px 8px;
+}
+
+.site-footer {
+	padding-bottom: @padding-margins * 2;
+}
+
+.btn {
+	border-color: @button-border-color;
+	background-color: @button-background-color;
+	color: @button-text-color !important;
+	border-radius: @border-radius;
+}
+
+.btn:hover {
+	border-color: @button-border-hover-color;
+	background-color: @button-background-hover-color;
+	color: @button-text-hover-color !important;
+}
+// grid support free form only
+@media only screen and  (max-width:@screen-sm-min){
+	.ccm-layout-column {
+	width: 100%  !important ;
+	}
+}
+// v8 acct menu
+#ccm-account-menu {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+#ccm-account-menu .dropdown-toggle {
+	border-left: 1px solid white;
+}
+
+#ccm-account-menu ul.dropdown-menu a {
+	color: black;
+}
+
+.no-bullets li{
+	list-style-type: none;
+}
+
+/* Fieldset  tallacman june 18, 2026 */
+.form-stacked .ccm-dashboard-express-form fieldset{
+ padding-left:0px;
+ padding-right:0px;
+ padding-top:0px;
+ padding-bottom:0px;
+ border-style:none;
+}

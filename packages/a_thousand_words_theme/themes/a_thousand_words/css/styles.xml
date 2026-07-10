@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<styles version="2.0" lang="scss">
+    <webfonts>
+        <preset identifier="default">
+            <font type="google" name="Droid Sans"/>
+            <font type="google" name="Nunito Sans"/>
+        </preset>
+    </webfonts>
+    <set name="Colors">
+        <style name="Primary" variable="primary" type="color"/>
+        <style name="Secondary" variable="secondary" type="color"/>
+        <style name="Body Background" variable="body-bg" type="color"/>
+        <style name="Body Text" variable="body-color" type="color"/>
+        <style name="Link" variable="link-color" type="color"/>
+        <style name="Link Hover" variable="link-hover-color" type="color"/>
+    </set>
+    <set name="Header">
+        <style name="Header Bar Background" variable="header-bar-background" type="color"/>
+    </set>
+</styles>

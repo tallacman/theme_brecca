@@ -1,0 +1,56 @@
+<?php        defined('C5_EXECUTE') or die("Access Denied.");
+$this->inc('elements/header.php'); ?>
+
+
+<!--  basic page structure   -->
+<main class="container full-width">
+    <div class="col-12">
+        <div class="container full-width edgetoedge">
+            <div class="col-12">
+                <?php
+                $a = new Area('Edge to Edge');
+                $a->display($c);
+                ?>
+            </div>
+        </div>
+
+
+        <div class="container gutters justify-center">
+            <div class="col-12 lead">
+                <div class="container full-width justify-center">
+                    <div class="col-12 col-xs-10 col-sm-9">
+                        <?php
+                        $a = new Area('Lead');
+                        $a->display($c);
+                        ?>
+                    </div>
+                </div>
+            </div>
+<!--  this area is centered on the page if there is no content in the Sidebar area     -->
+            <div class="col-12 col-xs-10 col-sm-6 content">
+                <?php       View::element('system_errors', array('format' => 'block', 'error' => isset($error) ? $error : null, 'success' => isset($success) ? $success : null, 'message' => isset($message) ? $message : null)); ?>
+
+                <?php       print $innerContent; ?>
+                <?php
+                $a = new Area('Main');
+                $a->display($c);
+                ?>
+            </div>
+
+            <?php
+            $a = new Area('Sidebar');
+            if (($a->getTotalBlocksInArea($c) > 0) || ($c->isEditMode())) {
+                echo '<div class="col-12 col-xs-10 col-sm-3 sidebar">';
+                $a->display($c);
+                echo "</div>";
+            } ?>
+
+
+
+        </div>
+    </div>
+</main>
+
+
+
+<?php       $this->inc('elements/footer.php'); ?>

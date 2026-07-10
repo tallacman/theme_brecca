@@ -1,0 +1,11 @@
+h5.faq-accordion-header {
+	color: white;
+	padding: 12px;
+	background-color: gray;
+	cursor:  pointer;
+}
+
+.faq-accordion-answer {
+	padding-left: 25px;
+	margin-bottom: 25px;
+}

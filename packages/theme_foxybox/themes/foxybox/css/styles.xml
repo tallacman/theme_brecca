@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<styles version="1.0">
+
+    <set name="Fonts">
+
+        <style name="Body"            variable="body"            type="type" />
+        <style name="Header"          variable="header"          type="type" />
+
+    </set>
+    <set name="Main Colors/Colours">
+
+        <style name="Site Name Color" variable="sitename" type="color" />
+        <style name="Header Bar Color" variable="header-background" type="color" />
+        <style name="Page Background Color" variable="page-background" type="color" />
+        <style name="Content Background Color" variable="content-background" type="color" />
+
+    </set>
+
+    <set name="Navigation Colors/Colours">
+
+        <style name="Nav Link Color" variable="nav-link" type="color" />
+        <style name="Dropdown Background Color" variable="dropdown-background" type="color" />
+        <style name="Dropdown Link Hover Color" variable="dropdown-link-hover" type="color" />
+        <style name="Dropdown Background Hover Color" variable="dropdown-background-hover" type="color" />
+
+    </set>
+
+    <set name="Forms Button Colors/Colours">
+
+        <style name="Form Button Color" variable="form-button" type="color" />
+        <style name="Form Text Color" variable="form-button-text" type="color" />
+        <style name="Form Button Hover Color" variable="form-button-hover" type="color" />
+        <style name="Form Text Hover Color" variable="form-button-hover-text" type="color" />
+
+    </set>
+
+
+</styles>

@@ -1,0 +1,151 @@
+body .ccm-page {
+    font-family: @body-type-font-family;
+    font-size: @body-type-font-size;
+    line-height: @body-type-font-leading-size;
+    color: @body-type-color;
+}
+html{
+	background-color: @footer-background-color;
+	height: 100%;
+}
+.ccm-page {
+    * {
+        box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: @header-type-font-family;
+        font-weight: @header-type-font-weight;
+        line-height: @header-type-font-leading-size;
+        color: @header-type-color;
+    }
+
+    h1 small,
+    h2 small,
+    h3 small,
+    h4 small,
+    h5 small,
+    h6 small {
+        color: lighten(@header-type-color, 12%);
+        font-size: 60%;
+    }
+
+    a {
+        touch-action: manipulation;
+    }
+    /// main nav colors
+    main a:link {
+        color: @main-link-color;
+        text-decoration: @main-link-decoration;
+    }
+
+    main a:link:hover {
+        color: @main-link-hover-color;
+        text-decoration: @main-link-hover-decoration;
+    }
+
+    main a:visited {
+        color: @main-link-color;
+    }
+
+    // footer link colors
+    footer a:focus,
+    footer a:hover {
+        color: @footer-link-hover-color;
+    }
+
+    footer a:link {
+        color: @footer-link-color;
+        text-decoration: none;
+    }
+
+    footer a:visited {
+        color: @footer-link-color;
+    }
+
+    footer a:focus,
+    footer a:hover {
+        color: @footer-link-hover-color;
+    }
+
+    // sitename size et al
+    header .sitename a {
+        color: @header-sitename-color;
+        padding: 10px 0;
+        display: block;
+        text-decoration: none;
+        font-family: @sitename-type-font-family;
+        font-size: @sitename-type-font-size;
+        line-height: @sitename-type-font-leading-size;
+        color: @sitename-type-color;    }
+
+    header .sitename a:hover {
+        color: @header-sitename-hover-color;
+    }
+
+    a:active {
+        outline: none;
+    }
+
+    main a.no-t-d,
+    main a.no-text-decoration,
+    main a.text-decoration-none {
+        text-decoration: none;
+    }
+
+    pre {
+        background: #f7f7f7;
+        white-space: pre-line;
+        padding: 12px;
+        border-radius: @border-radius;
+        font-size: 0.85rem;
+        max-width: 100%;
+        margin-bottom: 2.8rem;
+        position: relative;
+    }
+
+    pre:after {
+        content: attr(data-code-type);
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        color: #969696;
+        font-family: inherit;
+        font-weight: 900;
+    }
+
+    blockquote {
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "“" "”" "‘" "’";
+        font-style: italic;
+    }
+
+    blockquote:before {
+        color: contrast(@main-background-color);
+        content: "\201C";
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.12em;
+        vertical-align: -0.3em;
+    }
+
+    blockquote p {
+        display: inline;
+    }
+
+    p {
+        margin-bottom: 2.8rem;
+    }
+
+    dl.no-style,
+    ol.no-style,
+    ul.no-style {
+        list-style: none;
+    }
+}

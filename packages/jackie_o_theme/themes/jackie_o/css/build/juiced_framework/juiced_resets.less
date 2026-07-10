@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/*!
+ * Juiced (http://juicedcss.com)
+ * Copyright 2015 Joey Lea
+ * Licensed under MIT (https://github.com/ovdojoey/Juiced/blob/master/LICENSE)
+*/
+
+
+/// NOT CUrrently used  October 20, 2016 21:20:33
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+html[dir="rtl"] {
+    direction: rtl;
+    font-size: 100%;
+}
+
+html[dir="ltr"] {
+    direction: ltr;
+    font-size: 100%;
+}
+
+body .ccm-page {
+    font-size: @body-type-font-size;
+    line-height: @body-type-font-leading-size;
+    color: @body-font-color;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: @header-type-font-family;
+    font-weight: @header-type-font-weight;
+    line-height: @header-type-font-leading-size;
+    color: @header-type-font-color;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+    color: lighten(@header-font-color, 13%);
+    font-size: 60%;
+}
+
+a {
+    touch-action: manipulation;
+}
+
+a:link {
+    color: @color-link;
+    text-decoration: none;
+}
+
+a:visited {
+    color: @color-link-visited;
+}
+
+a:focus,
+a:hover {
+    color: darken(@color-link, 12%);
+}
+
+a:active {
+    outline: none;
+}
+
+a.no-t-d,
+a.no-text-decoration,
+a.text-decoration-none {
+    text-decoration: none;
+}
+
+pre {
+    background: #f7f7f7;
+    white-space: pre-line;
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    max-width: 100%;
+    margin-bottom: 2.8rem;
+    position: relative;
+}
+
+pre:after {
+    content: attr(data-code-type);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #969696;
+    font-family: sans-serif;
+    font-weight: 900;
+}
+
+blockquote {
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "“" "”" "‘" "’";
+}
+
+blockquote:before {
+    color: #c4c4c4;
+    content: open-quote;
+    font-size: 3em;
+    line-height: 0.1em;
+    margin-right: 0.12em;
+    vertical-align: -0.3em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+p {
+    margin-bottom: 1.8rem;
+}
+
+dl.no-style,
+ol.no-style,
+ul.no-style {
+    list-style: none;
+}

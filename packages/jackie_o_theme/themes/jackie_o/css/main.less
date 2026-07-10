@@ -1,0 +1,27 @@
+// main less concatenates all the less files into one import
+
+@import "presets/defaults.less";
+
+@import ~"@{preset-fonts-file}";
+
+//@import "build/juiced_framework/juiced_resets.less";
+
+@import "build/typography.less";
+
+.ccm-page {
+        @import "build/juiced_framework/juiced_components.less";
+        @import "build/juiced_framework/juiced_helpers.less";
+        @import "build/juiced_framework/juiced_grid.less";
+        @import "build/juiced_framework/juiced_breakpoints.less";
+        
+        @import "build/bootstrap/tooltip.less";
+        @import "build/bootstrap/visibility.less";
+
+        @import "build/image_slider.less";
+        @import "build/nav.less";
+        @import "build/page_list.less";
+        @import "build/page-list-template-thumbnail-grid.less";
+        @import "build/theme.less";
+}
+
+@import "build/slicknav.less";

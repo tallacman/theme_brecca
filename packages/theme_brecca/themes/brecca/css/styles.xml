@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<styles version="1.0">
+
+    <set name="Colors/Colours">
+        <style name="Page Background Color"                 variable="background"                       type="color"/>
+        <style name="Accent Main Color"                     variable="accent"                           type="color"/>
+        <style name="Link Color"                            variable="link"                             type="color"/>
+        <style name="Social Icon Background Color"          variable="social-icon-background"           type="color"/>
+        <style name="Socail Icon Color"                     variable="social-icon"                      type="color"/>
+        <style name="Social Icon Hover Background Color"    variable="social-icon-background-hover"     type="color"/>
+        <style name="Social Icon Hover Color"               variable="social-icon-hover"                type="color"/>
+        <style name="Top Nav Background Color"              variable="nav-background"                type="color"/>
+    </set>
+
+    <set name="Fonts">
+        <style name="Site Name"                             variable="sitename"                         type="type"/>
+        <style name="Body Font"                             variable="body"                             type="type"/>
+        <style name="Header Font"                           variable="header"                           type="type"/>
+        <style name="Header Menu Font"                      variable="nav"                              type="type"/>
+    </set>
+
+</styles>

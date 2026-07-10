@@ -1,0 +1,119 @@
+/* dropdown nav pushed right */
+nav .nav {
+	background-color: @nav-background-color;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+nav li {
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	position: relative;
+	background-color: @header-nav-link-background-color;
+}
+
+nav ul.right ul {
+	display: none;
+	position: absolute;
+	left: 0; // change to right or left for different offsets
+	z-index: 12;
+	width: 250px;
+}
+nav ul.left ul {
+	display: none;
+	position: absolute;
+	right: 0; // change to right or left for different offsets
+	z-index: 12;
+	width: 250px;}
+
+nav ul li:hover ul {
+	display: block;
+	text-align: left; // change to left, right or center for text
+}
+
+nav ul ul li {
+	width: 100%;
+	display: block;
+	background-color: @dropdown-nav-link-background-color;
+}
+
+nav ul ul li:hover {
+	width: 100%;
+	display: block;
+	background-color: @dropdown-nav-link-background-hover-color;
+}
+
+nav ul li a {
+	padding: 10px;
+	display: block;
+	color: @header-nav-link-color;
+	background: @header-nav-link-background-color !important;
+}
+
+nav ul ul li a {
+	padding: 10px;
+	display: block;
+	color: @dropdown-nav-link-color;
+	background: @dropdown-nav-link-background-color !important;
+
+}
+// Nav link colors
+
+nav a:focus,
+nav a:hover {
+	color: @header-nav-link-hover-color;
+}
+
+nav a {
+	color: @header-nav-link-color;
+	background-color: @header-nav-link-background-color;
+	text-decoration: none;
+}
+
+nav a:focus,
+nav a:hover {
+	color: @header-nav-link-hover-color;
+	background-color: @header-nav-link-background-hover-color  !important ;
+}
+// Nav dropdown link colours
+
+nav ul ul a:focus,
+nav ul ul a:hover {
+	color: @dropdown-nav-link-hover-color;
+}
+
+nav ul ul a:link {
+	color: @dropdown-nav-link-color;
+	text-decoration: none;
+}
+
+nav ul ul a:visited {
+	color: @dropdown-nav-link-color;
+}
+
+nav ul ul a:focus,
+nav ul ul a:hover {
+	color: @dropdown-nav-link-hover-color;
+}
+/*  	added tallacman February 6, 2020 3rd level     */
+
+ul#menu.right ul {
+	text-align: left;
+}
+
+ul#menu.right ul li ul{
+	position: relative;
+	display: none;
+}
+#menu li.nav-path-selected ul li:hover >  ul {
+	position: absolute;
+	top: 0;
+	right: 77px;
+	margin-left: -250px;
+	display: block;
+}

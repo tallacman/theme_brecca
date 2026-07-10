@@ -1,0 +1,5 @@
+2.0.0 - July 3, 2026 - CMS 9 marketplace modernization
+1.2   - package maintenance
+1.0   - added delete db on uninstall
+0.9.3 - February 16, 2019 - form labels and controller fixes
+0.9.0 - February 6, 2019 - initial submission

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
+
+  <table name="btTallacmansBodaciousButtons">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="link" type="string" size="12"/>
+    <field name="link_Title" type="string" size="35"/>
+    <field name="link_Page" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="link_URL" type="string" size="125"/>
+    <field name="link_File" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="forceDownload" type="boolean">
+      <default value="1"/>
+      <notnull/>
+    </field>
+    <field name="openIn" type="string" size="6"/>
+    <field name="spacingTop" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="spacingRight" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="spacingBottom" type="integer">
+      <unsigned/>
+      <default value="8"/>
+    </field>
+    <field name="spacingLeft" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="styleMode" type="string" size="10">
+      <default value="theme"/>
+    </field>
+    <field name="buttonBackgroundColor" type="string" size="7"/>
+    <field name="buttonTextColor" type="string" size="7"/>
+    <field name="buttonHoverBackgroundColor" type="string" size="7"/>
+    <field name="buttonHoverTextColor" type="string" size="7"/>
+    <field name="fontFamily" type="string" size="255"/>
+    <field name="fontWeight" type="string" size="3">
+      <default value="400"/>
+    </field>
+    <field name="fontSize" type="integer">
+      <unsigned/>
+      <default value="16"/>
+    </field>
+    <field name="buttonBorderColor" type="string" size="7"/>
+    <field name="buttonBorderWidth" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+    <field name="buttonHoverBorderColor" type="string" size="7"/>
+    <field name="buttonHoverBorderWidth" type="integer">
+      <unsigned/>
+      <default value="0"/>
+    </field>
+  </table>
+
+</schema>

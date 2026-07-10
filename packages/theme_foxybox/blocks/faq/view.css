@@ -1,0 +1,15 @@
+.no-padding {
+	padding: 0;
+}
+
+.no-bullets{
+	list-style-type: none;
+}
+
+ul.ccm-faq-block-links li a{
+	text-decoration: none  !important ;
+}
+
+ul.ccm-faq-block-links li{
+	padding-top: 8px;
+}

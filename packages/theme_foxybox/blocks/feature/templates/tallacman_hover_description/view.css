@@ -1,0 +1,25 @@
+div.ccm-block-feature-item-hover-wrapper {
+    text-align: center;
+    font-size: 120%; 
+	position: relative;
+}
+div.ccm-block-feature-item-text{ 
+	display: none;
+}
+div.ccm-block-feature-item-hover-wrapper:hover
+div.ccm-block-feature-item-text { 
+	position: absolute; 
+	top: 0; 
+	width: 100%; 
+	height: 100%; 
+	text-align: center; 
+	background-color: rgba(255,255,255,1.0); 
+	padding: 13px; 
+	font-size: 85%;
+	display: block;
+}
+
+div.ccm-block-feature-item-hover-wrapper h3 { 
+	padding-bottom: 8px;
+}
+

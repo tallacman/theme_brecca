@@ -1,0 +1,11 @@
+2.0.7 - July 2, 2026 - updated marketplace marketing copy (MARKETING.md); synced CHANGELOG.TXT
+2.0.6 - July 2, 2026 - choosing double line style now sets line thickness to 3px automatically; updated double-line help note
+2.0.5 - July 1, 2026 - verified all PHP files pass the Concrete CMS c5:phpcs linter
+2.0.4 - July 1, 2026 - added optional centered drop shadow with blur, opacity, and color controls; shadow clears on hover
+2.0.3 - July 1, 2026 - fixed image border and padding not persisting after save (legacy preset lookup remapping px values)
+2.0.2 - July 1, 2026 - fixed live preview image updates when choosing a new file; added double-line thickness guidance
+2.0.1 - July 1, 2026 - fixed package upgrade migration for legacy empty padding values before schema conversion
+2.0.0 - July 1, 2026 - rewrote for Concrete CMS 9; side-by-side editor with live preview; px inputs; margins; native color inputs; legacy migrations
+1.0.3 - February 27, 2019 - colors populate properly: moved to addedit
+1.0 - February 6, 2019 - removed page call from block controller color matched icon to #ff05c4
+0.8.9 - February 5, 2019 - second viable rebuild

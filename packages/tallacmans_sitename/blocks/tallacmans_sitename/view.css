@@ -1,0 +1,51 @@
+div.tallacmans-sitename-wrapper {
+  display: flex;
+}
+
+.tallacmans-sitename {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tallacmans-sitename-text a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.tallacmans-sitename-text a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.align-image-left .tallacmans-sitename-icon {
+  order: 1;
+  margin-right: 12px;
+}
+
+.align-image-left .tallacmans-sitename-text {
+  order: 2;
+}
+
+.align-image-right .tallacmans-sitename-icon {
+  margin-left: 12px;
+}
+
+.align-image-top,
+.align-image-bottom {
+  flex-direction: column;
+}
+
+.align-image-top .tallacmans-sitename-icon {
+  order: 1;
+}
+
+.align-image-top .tallacmans-sitename-text {
+  order: 2;
+}
+
+div.tallacmans-sitename-icon img {
+  max-height: 50px;
+  width: auto;
+}

@@ -1,0 +1,144 @@
+bold,
+  em {
+	font-weight: bold;
+}
+	italic {
+  font-style: italic;
+}
+
+.small {
+	font-size: small;
+}
+
+p {
+	margin-bottom: 1.3em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: @header-type-font-family;
+	color: @header-type-color;
+	line-height: @header-type-font-line-height;
+	margin-bottom: 1.3em;
+	font-weight: @header-type-font-weight;
+	font-style: @header-type-font-weight;
+}
+
+h1 {
+	font-size: 2.05em;
+}
+
+h2 {
+	font-size: 1.9em;
+}
+
+h3 {
+	font-size: 1.8em;
+}
+
+h4 {
+	font-size: 1.5em;
+}
+
+h5 {
+	font-size: 1.3em;
+}
+
+h6 {
+	font-size: 1.1em;
+}
+
+hr {
+	margin-top: 45px;
+	margin-bottom: 45px;
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+}
+
+div.alert {
+	font-size: .9em;
+	padding: 8px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	border: solid 1px silver;
+	border-radius: 4px
+}
+
+dl {
+
+}
+
+dl dt {
+	font-weight: bold;
+	margin-bottom: 0.2em;
+	margin-top: 0.5em;
+}
+
+ol,
+ul {
+	margin-top: 1.4em;
+	margin-bottom: 2em;
+}
+
+ol li,
+ul li {
+	list-style-position: inside;
+	margin-top: 0.3em;
+}
+
+blockquote {
+	border-left-style: solid;
+	border-left-width: 1px;
+	padding-left: 2em;
+}
+
+q {
+	quotes: "“" "”" "‘" "’";
+}
+
+blockquote::first-letter {
+
+}
+
+q:before {
+	content: open-quote;
+	font-size: 2em;
+}
+
+q:after {
+	content: close-quote;
+}
+
+cite {
+	margin-left: 2em;
+}
+
+cite:before {
+	content: "––";
+}
+
+code {
+	font-size: 120%;
+	font-family: "Courier New", Courier, mono;
+	background-color: #fff0dc;
+}
+
+ol.breadcrumb {
+	padding: 0;
+	list-style-type: none;
+}
+
+ol.breadcrumb li {
+	display: inline-block;
+	padding-right: 12px;
+}

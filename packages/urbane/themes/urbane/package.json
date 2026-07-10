@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "sass --load-path=../../../../concrete/bedrock/assets css/presets/default/main.scss css/skins/default.css --style=compressed",
+    "watch": "sass --watch --load-path=../../../../concrete/bedrock/assets css/presets/default/main.scss css/skins/default.css"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5"
+  }
+}
