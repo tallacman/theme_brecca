@@ -14,7 +14,7 @@ class Controller extends Package
 
     protected $pkgHandle = 'theme_brecca';
     protected $appVersionRequired = '9.0';
-    protected $pkgVersion = '2.0.3';
+    protected $pkgVersion = '2.0.5';
     protected $pkgAutoloaderRegistries = array(
         'src' => '\Concrete\Package\ThemeBrecca\Src'
     );
@@ -38,7 +38,7 @@ class Controller extends Package
     {
         $pkg = parent::install();
         PageTheme::add('brecca', $pkg);
-        BlockType::installBlockTypeFromPackage('tallacmans_background_image', $pkg);
+        $this->installBackgroundImageBlock($pkg);
 
         if (!PageTemplate::getByHandle('about_brecca')) {
             PageTemplate::add('about_brecca', t('About Brecca'), FILENAME_PAGE_TEMPLATE_DEFAULT_ICON, $pkg);
@@ -50,6 +50,7 @@ class Controller extends Package
     public function upgrade()
     {
         parent::upgrade();
+        $this->installBackgroundImageBlock($this);
 
         if (!PageTemplate::getByHandle('about_brecca')) {
             PageTemplate::add('about_brecca', t('About Brecca'), FILENAME_PAGE_TEMPLATE_DEFAULT_ICON, $this);
@@ -67,5 +68,12 @@ class Controller extends Package
         }
 
         parent::uninstall();
+    }
+
+    protected function installBackgroundImageBlock($pkg): void
+    {
+        if (!BlockType::getByHandle('tallacmans_background_image')) {
+            BlockType::installBlockTypeFromPackage('tallacmans_background_image', $pkg);
+        }
     }
 }
