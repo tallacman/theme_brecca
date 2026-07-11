@@ -1,40 +1,30 @@
-### version 2.0.1 - July 10, 2026
+# Brecca
 
-- fixed package controller parse error (missing closing class brace) that prevented install
-- normalized package layout so `controller.php` is at package root
-- clarified install steps to avoid broken package handle from wrong folder naming/nesting
+**When your message is visual.**
 
-###version 1.3 - April 24, 2019
+Brecca is a Concrete CMS theme built for the moments that need more than a sidebar and a paragraph — weddings, engagements, galas, launches, and one-off event sites where the visuals carry the message.
 
-- remove account menu
-resolved issue with animate preventing the moving of blocks in the main area fixed most coding practices to current standards removed useless page templates raised version to 8.2 minimum
+## Features
 
-### version 1.4 - January 27, 2020
+- **Edge-to-edge Background Images** — Set one background image site-wide, then override it on any individual page. When a page has its own image set, the site-wide default is skipped entirely, not just hidden — no wasted image requests.
+- **Color Overlays Built In** — Tint or darken the background image with a translucent overlay, no extra block required.
+- **Brecca Nav** — A centered, flexbox-powered autonav template. Supports subpages, disappears when there's nothing to show.
+- **A Site Name That Behaves** — Long site names resize on the fly via JavaScript instead of breaking awkwardly mid-word.
+- **Social Links Area** — A ready-to-go global area for social icons, shared across every page.
+- **Juiced Grid Framework** — Built-in grid integration for fast layout.
+- **"About Brecca" Reference Page** — An auto-installed page template with setup notes for site admins (logged-in only), plus room for your own always-visible content alongside it.
+- **Concrete CMS 9 Ready** — Built and tested against current core.
 
-- added framework and button styles
+## Requirements
 
-### version 1.5 - February 4, 2020
+- Concrete CMS 9.0 or later
 
-- nav disappears if empty
-- breadcrumbs styled
+## Installation
 
-### version 1.5.1 - February 5, 2020
+1. Install the package through the Dashboard (Extend Concrete → Install).
+2. Activate the Brecca theme under Pages & Themes.
+3. Add the `Tallacmans Background Image` block to the theme's global or per-page background areas to set your imagery.
 
-- nav ul ul display fixed - needs mobile nav
-- fixed nav colors
+## Changelog
 
-### version 8.5.2 - March 18, 2021  
-
-- fixed freature display (tooltip be gone)
-- added feature block default to accomplish the above
-- set default nav background color to be a dark gray
-
-
-### version 2.0.0 - June 23, 2026
-
-- updated required Concrete CMS version to 9.0
-- bumped package version to 2.0.0
-- auto-install `tallacmans_background_image` block with theme install
-- auto-uninstall `tallacmans_background_image` block when theme is removed
-- corrected `Tallacmans Background Image` block namespace for package compatibility
-- kept Juiced grid framework integration
+See [CHANGELOG.md](CHANGELOG.md) for full version history.

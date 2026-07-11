@@ -14,7 +14,7 @@ class Controller extends Package
 
     protected $pkgHandle = 'theme_brecca';
     protected $appVersionRequired = '9.0';
-    protected $pkgVersion = '2.0.2';
+    protected $pkgVersion = '2.0.3';
     protected $pkgAutoloaderRegistries = array(
         'src' => '\Concrete\Package\ThemeBrecca\Src'
     );

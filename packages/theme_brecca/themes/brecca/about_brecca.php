@@ -56,7 +56,6 @@ $u = new User();
     <div class="col-10 col-sm-9 col-md-7 col-lg-7 white-outer-back gutters-a">
         <div class="container">
 
-
             <?php if ($u->isRegistered()) { ?>
                 <div class="inner white-translucent-background gutters-all-big col-12">
 
@@ -71,12 +70,9 @@ $u = new User();
                     <h2>Site Name</h2>
                     <p>The site name appears on the top of every page. This font-face can be changed. The theme comes with the number of preloaded fonts. </p> <p>Using JavaScript, the name will never break the two pieces. Long names will be resized to fit in the area, but try not to get excessive.</p>
                 </div>
-               
-               <?php } ?>
+            <?php } ?>
 
-         
-
-             <div class="col-12">
+            <div class="inner white-translucent-background gutters-all-big col-12">
             <?php
             $a = new Area('Main');
             $a->display($c);

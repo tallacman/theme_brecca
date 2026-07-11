@@ -1,3 +1,8 @@
+### version 2.0.3 - July 11, 2026
+
+- custom page content added to the "About Brecca" page now always displays, wrapped in the theme's white translucent box styling, regardless of login status
+- documentation text on the "About Brecca" page remains logged-in only
+
 ### version 2.0.2 - July 10, 2026
 
 - added an "About Brecca" page template, auto-registered on package install/upgrade
