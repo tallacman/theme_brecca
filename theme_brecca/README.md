@@ -4,7 +4,7 @@
 - normalized package layout so `controller.php` is at package root
 - clarified install steps to avoid broken package handle from wrong folder naming/nesting
 
-- ### version 2.0.0 - June 23, 2026
+### version 2.0.0 - June 23, 2026
 
 - updated required Concrete CMS version to 9.0
 - bumped package version to 2.0.0
