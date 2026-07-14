@@ -412,25 +412,62 @@ PHP;
         }
         ksort($byRow);
 
-        $cols = [];
-        $itemIndex = 0;
-        $rowKeys = array_keys($byRow);
-        foreach ($rowKeys as $rowIndex => $rowNum) {
-            if ($rowIndex > 0) {
-                $breakClass = $class . '__row-break';
-                if (empty($settings['theme_has_bootstrap'])) {
-                    $cols[] = '<div class="' . $breakClass . '" aria-hidden="true"></div>';
-                } else {
-                    $cols[] = '<div class="w-100 ' . $breakClass . '" aria-hidden="true"></div>';
-                }
-            }
-            $rowAreas = $byRow[$rowNum];
+        $sortedAreas = [];
+        foreach ($byRow as $rowNum => $rowAreas) {
             usort($rowAreas, static function ($a, $b) use ($areaPlacement) {
                 $colA = (int) (($areaPlacement[$a] ?? [])['col'] ?? 1);
                 $colB = (int) (($areaPlacement[$b] ?? [])['col'] ?? 1);
                 return $colA <=> $colB;
             });
             foreach ($rowAreas as $areaName) {
+                $sortedAreas[] = $areaName;
+            }
+        }
+
+        $packedRows = [];
+        foreach ($sortedAreas as $areaName) {
+            $placement = $areaPlacement[$areaName] ?? ['col' => 1, 'span' => 12, 'row' => 1];
+            $isFull = in_array($areaName, $areaFullRows, true);
+            $span = $isFull
+                ? 12
+                : max(1, min(12, (int) (($responsiveColumns[$areaName] ?? [])['desktop'] ?? ($placement['span'] ?? 12))));
+            $col = $isFull
+                ? 1
+                : max(1, min(12 - $span + 1, (int) ($placement['col'] ?? 1)));
+
+            $target = 0;
+            while (true) {
+                if (!isset($packedRows[$target])) {
+                    $packedRows[$target] = [];
+                    break;
+                }
+                $overlap = false;
+                foreach ($packedRows[$target] as $item) {
+                    $itemStart = $item['col'];
+                    $itemEnd = $item['col'] + $item['span'] - 1;
+                    $nextEnd = $col + $span - 1;
+                    if (!($nextEnd < $itemStart || $itemEnd < $col)) {
+                        $overlap = true;
+                        break;
+                    }
+                }
+                if (!$overlap) {
+                    break;
+                }
+                $target++;
+            }
+            $packedRows[$target][] = ['area' => $areaName, 'col' => $col, 'span' => $span];
+        }
+
+        $rowsMarkup = [];
+        $itemIndex = 0;
+        foreach ($packedRows as $rowItems) {
+            usort($rowItems, static function ($a, $b) {
+                return $a['col'] <=> $b['col'];
+            });
+            $cols = [];
+            foreach ($rowItems as $item) {
+                $areaName = $item['area'];
                 $itemIndex++;
                 $placement = $areaPlacement[$areaName] ?? ['col' => 1, 'span' => 12, 'row' => 1];
                 $meta = $areaResponsive[$areaName] ?? [];
@@ -451,9 +488,10 @@ PHP;
                 }
                 $cols[] = '<div class="' . $itemClass . '"' . $idAttr . $style . ">\n" . $this->indentLines($this->areaPhpBlock($areaName), 4) . "\n</div>";
             }
+            $rowsMarkup[] = '<div class="row ' . $gutter . "\">\n" . $this->indentLines(implode("\n", $cols), 4) . "\n</div>";
         }
 
-        $grid = '<div class="row ' . $gutter . "\">\n" . $this->indentLines(implode("\n", $cols), 4) . "\n</div>";
+        $grid = implode("\n", $rowsMarkup);
         $content = $this->indentLines($this->wrapInner($inner, $grid), 4);
         $containerIdAttr = $settings['container_id'] !== '' ? (' id="' . $this->safeHtmlId($settings['container_id']) . '"') : '';
         $body = '<div class="' . $class . '"' . $containerIdAttr . ">\n{$content}\n</div>";
@@ -553,10 +591,10 @@ PHP;
 
         $css = '';
         if (!empty($tabletRules)) {
-            $css .= "@media (max-width: 991px) {\n    " . $scope . " .row { display: flex; flex-wrap: wrap; }\n    " . $scope . " ." . $class . "__row-break { display: none !important; height: 0; flex-basis: 0; }\n    " . implode("\n    ", $tabletRules) . "\n}\n";
+            $css .= "@media (max-width: 991px) {\n    " . $scope . " .row { display: flex; flex-wrap: wrap; }\n    " . implode("\n    ", $tabletRules) . "\n}\n";
         }
         if (!empty($mobileRules)) {
-            $css .= "@media (max-width: 767px) {\n    " . $scope . " .row { display: flex; flex-wrap: wrap; }\n    " . $scope . " ." . $class . "__row-break { display: none !important; height: 0; flex-basis: 0; }\n    " . implode("\n    ", $mobileRules) . "\n}\n";
+            $css .= "@media (max-width: 767px) {\n    " . $scope . " .row { display: flex; flex-wrap: wrap; }\n    " . implode("\n    ", $mobileRules) . "\n}\n";
         }
 
         return trim($css);

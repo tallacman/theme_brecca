@@ -8,7 +8,7 @@ class Controller extends Package
 {
     protected $pkgHandle = 'container_maker';
     protected $appVersionRequired = '9.0.0';
-    protected $pkgVersion = '1.6.7';
+    protected $pkgVersion = '1.6.9';
     protected $pkgAutoloaderRegistries = [
         'src/Service' => '\\Concrete\\Package\\ContainerMaker\\Service',
     ];

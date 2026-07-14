@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.9
+
+- CSS Grid designer now prevents block overlap in all responsive tiers (desktop/tablet/mobile), including tablet preview collisions.
+
+## 1.6.8
+
+- Preview viewport controls now show full Bootstrap 5 breakpoints: **xs, sm, md, lg, xl, xxl**.
+- Breakpoint buttons map to the existing responsive editing tiers so current container data stays compatible.
+- Canvas preview widths now align with Bootstrap 5 breakpoint ranges.
+
 ## 1.6.7
 
 - Reworked import so **Installed / Upload / Paste** all load directly into the designer again.

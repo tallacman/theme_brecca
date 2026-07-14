@@ -214,11 +214,14 @@ $showImport = !empty($themes) && (int) $selectedThemeID > 0;
 
         <section class="cm-main">
             <div class="cm-viewport-bar btn-group btn-group-sm mb-2" role="group" aria-label="<?= h(t('Preview viewport')) ?>">
-                <button type="button" class="btn btn-outline-secondary active" data-viewport="desktop"><?= t('Desktop') ?></button>
-                <button type="button" class="btn btn-outline-secondary" data-viewport="tablet"><?= t('Tablet') ?> ≤991px</button>
-                <button type="button" class="btn btn-outline-secondary" data-viewport="mobile"><?= t('Mobile') ?> ≤767px</button>
+                <button type="button" class="btn btn-outline-secondary" data-viewport="xs">xs &lt;576</button>
+                <button type="button" class="btn btn-outline-secondary" data-viewport="sm">sm ≥576</button>
+                <button type="button" class="btn btn-outline-secondary" data-viewport="md">md ≥768</button>
+                <button type="button" class="btn btn-outline-secondary active" data-viewport="lg">lg ≥992</button>
+                <button type="button" class="btn btn-outline-secondary" data-viewport="xl">xl ≥1200</button>
+                <button type="button" class="btn btn-outline-secondary" data-viewport="xxl">xxl ≥1400</button>
             </div>
-            <div id="cmCanvas" class="cm-canvas" data-viewport="desktop">
+            <div id="cmCanvas" class="cm-canvas" data-viewport="lg">
                 <div id="cmRowLines" class="cm-row-lines" aria-hidden="true"></div>
                 <div id="cmColLines" class="cm-col-lines" aria-hidden="true"></div>
                 <div id="cmTiles" class="cm-tiles"></div>
@@ -297,25 +300,6 @@ $showImport = !empty($themes) && (int) $selectedThemeID > 0;
                 </details>
             </div>
         </section>
-
-        <aside class="cm-code-wrap">
-            <div class="d-flex align-items-center justify-content-between gap-2">
-                <div class="cm-panel-title mb-0"><?= t('Generated code') ?></div>
-                <div class="form-check form-switch mb-0" title="<?= h(t('Advanced: hand-edit the code that gets written to the theme file.')) ?>">
-                    <input class="form-check-input" type="checkbox" id="cmEditCode">
-                    <label class="form-check-label small" for="cmEditCode"><?= t('Edit code') ?></label>
-                </div>
-            </div>
-            <input type="hidden" name="use_custom_code" id="cmUseCustomCode" value="0">
-            <pre id="cmCode" class="cm-code"></pre>
-            <textarea name="custom_code" id="cmCodeEdit" class="cm-code d-none" spellcheck="false" wrap="off" disabled></textarea>
-            <div id="cmEditCodeControls" class="d-none mt-2">
-                <div class="alert alert-warning py-2 px-2 small mb-2 d-flex align-items-start gap-2">
-                    <span><?= t('You are editing the raw PHP that will be written to the theme. Only do this if you know what you are doing — manual edits are saved verbatim and the visual designer will no longer round-trip perfectly.') ?></span>
-                </div>
-                <button type="button" class="btn btn-sm btn-outline-secondary" id="cmResetCode"><?= t('Reset to generated code') ?></button>
-            </div>
-        </aside>
     </div>
 
     <div class="cm-toolbar">
@@ -414,9 +398,13 @@ $showImport = !empty($themes) && (int) $selectedThemeID > 0;
 .cm-preset-preview{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1px;width:2.5rem;height:.85rem;background:#ddd;border-radius:2px;overflow:hidden}
 .cm-preset-preview span{background:var(--cm-accent);opacity:.6}
 .cm-main{display:flex;flex-direction:column;gap:.65rem;min-width:0}
-.cm-canvas{position:relative;flex:1;min-height:360px;background:#fff;border:2px dashed var(--cm-border);border-radius:.375rem;padding:1rem;transition:border-color .15s,background .15s,max-width .2s;margin:0 auto;width:100%}
-.cm-canvas[data-viewport="tablet"]{max-width:991px}
-.cm-canvas[data-viewport="mobile"]{max-width:767px}
+.cm-canvas{position:relative;flex:1;height:800px;min-height:800px;background:#fff;border:2px dashed var(--cm-border);border-radius:.375rem;padding:1rem;transition:border-color .15s,background .15s,max-width .2s;margin:0 auto;width:100%;overflow:auto}
+.cm-canvas[data-viewport="xs"]{max-width:575px}
+.cm-canvas[data-viewport="sm"]{max-width:767px}
+.cm-canvas[data-viewport="md"]{max-width:991px}
+.cm-canvas[data-viewport="lg"]{max-width:1199px}
+.cm-canvas[data-viewport="xl"]{max-width:1399px}
+.cm-canvas[data-viewport="xxl"]{max-width:none}
 .cm-viewport-bar .btn.active{background:var(--cm-accent);border-color:var(--cm-accent);color:#fff}
 .cm-canvas.cm-drag-over{border-color:var(--cm-accent);background:#f0f6ff}
 .cm-col-lines,.cm-row-lines{position:absolute;inset:1rem;pointer-events:none;z-index:0}
@@ -478,10 +466,16 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     let drag = null;
     let tracks = Array.from({length:12}, ()=>({mode:'fr', value:'1', min:'200px', preferred:'1fr', max:'100%'}));
     let rowSize = { mode:'minmax', value:'64px|auto', min:'200px', preferred:'1fr', max:'100%' };
-    let previewViewport = 'desktop';
+    let previewViewport = 'lg';
     let layoutMode = 'css_grid';
 
     function isBootstrap(){ return layoutMode === 'bootstrap5'; }
+    function previewTier(){
+        if (previewViewport === 'xs' || previewViewport === 'sm' || previewViewport === 'mobile') return 'mobile';
+        if (previewViewport === 'md' || previewViewport === 'tablet') return 'tablet';
+        if (previewViewport === 'desktop') return 'desktop';
+        return 'desktop';
+    }
     function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
     function slug(s){return (s||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'')||'container';}
     function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
@@ -555,21 +549,23 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     function areaMobileCol(a){
         return (a.mobileCol === null || a.mobileCol === '' || a.mobileCol === undefined) ? 1 : a.mobileCol;
     }
-    function previewGridColumnsCss(){
+    function previewGridColumnsCssForTier(tier){
         if (isBootstrap()) return 'repeat(12, minmax(0, 1fr))';
-        if (previewViewport === 'mobile') {
+        if (tier === 'mobile') {
             const v = ($('cmMobileColumns')?.value || '').trim();
             if (v) return v;
         }
-        if (previewViewport === 'tablet') {
+        if (tier === 'tablet') {
             const v = ($('cmTabletColumns')?.value || '').trim();
             if (v) return v;
         }
         return buildGridColumnsCss();
     }
-    function previewColCount(){
+    function previewGridColumnsCss(){
+        return previewGridColumnsCssForTier(previewTier());
+    }
+    function colCountFromCss(css){
         if (isBootstrap()) return 12;
-        const css = previewGridColumnsCss();
         if (css === buildGridColumnsCss()) return colCount();
         let depth = 0, count = 1;
         for (let i = 0; i < css.length; i++) {
@@ -580,13 +576,20 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         }
         return Math.max(1, count);
     }
-    function effectiveLayout(a){
+    function previewColCountForTier(tier){
+        if (isBootstrap()) return 12;
+        return colCountFromCss(previewGridColumnsCssForTier(tier));
+    }
+    function previewColCount(){
+        return previewColCountForTier(previewTier());
+    }
+    function effectiveLayoutForTier(a, tier){
         const r = areaResponsiveSpans(a);
-        const cols = previewColCount();
-        if (previewViewport === 'desktop') {
+        const cols = previewColCountForTier(tier);
+        if (tier === 'desktop') {
             return { col: a.full ? 1 : a.col, span: a.full ? colCount() : a.span, full: !!a.full };
         }
-        if (previewViewport === 'tablet') {
+        if (tier === 'tablet') {
             const span = Math.min(r.tablet, cols);
             const full = span >= cols || !!a.full;
             const col = full ? 1 : clamp(areaTabletCol(a), 1, Math.max(1, cols - span + 1));
@@ -597,6 +600,9 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         const full = stack || span >= cols;
         const col = full ? 1 : clamp(areaMobileCol(a), 1, Math.max(1, cols - span + 1));
         return { col, span, full };
+    }
+    function effectiveLayout(a){
+        return effectiveLayoutForTier(a, previewTier());
     }
 
     function isMobileStacked(a){
@@ -610,7 +616,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     function computePreviewPlacements(){
         if (isBootstrap()) {
             const cols = 12;
-            if (previewViewport === 'desktop') {
+            if (previewTier() === 'desktop') {
                 return areas.map(a => ({
                     col: a.full ? 1 : a.col,
                     span: a.full ? cols : a.span,
@@ -621,7 +627,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
                 }));
             }
             return areas.map(a => {
-                if (previewViewport === 'tablet') {
+                if (previewTier() === 'tablet') {
                     const r = areaResponsiveSpans(a);
                     const span = Math.min(a.full ? cols : (a.tabletSpan != null && a.tabletSpan !== '' ? parseInt(a.tabletSpan, 10) : r.tablet), cols);
                     const full = !!a.full || span >= cols;
@@ -652,7 +658,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
                 };
             });
         }
-        if (previewViewport === 'desktop') {
+        if (previewTier() === 'desktop') {
             return areas.map(a => ({
                 col: a.full ? 1 : a.col,
                 span: a.full ? colCount() : a.span,
@@ -666,7 +672,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         const cols = previewColCount();
         return areas.map(a => {
             const rowSpan = Math.max(1, a.rowSpan || 1);
-            if (previewViewport === 'tablet') {
+            if (previewTier() === 'tablet') {
                 const r = areaResponsiveSpans(a);
                 const span = Math.min(a.full ? cols : (a.tabletSpan != null && a.tabletSpan !== '' ? parseInt(a.tabletSpan, 10) : r.tablet), cols);
                 const full = !!a.full || span >= cols;
@@ -702,13 +708,13 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     function previewMaxRow(){
         if (isBootstrap()) {
             if (!areas.length) return 0;
-            if (previewViewport === 'desktop') return maxRow();
-            return Math.max(...areas.map(a => previewViewport === 'tablet' ? (a.tabletRow || a.row) : (a.mobileRow || a.row)));
+            if (previewTier() === 'desktop') return maxRow();
+            return Math.max(...areas.map(a => previewTier() === 'tablet' ? (a.tabletRow || a.row) : (a.mobileRow || a.row)));
         }
-        if (previewViewport === 'desktop') return maxRow();
+        if (previewTier() === 'desktop') return maxRow();
         if (!areas.length) return 0;
         return Math.max(...areas.map(a => {
-            const row = previewViewport === 'tablet' ? a.tabletRow : a.mobileRow;
+            const row = previewTier() === 'tablet' ? a.tabletRow : a.mobileRow;
             return row + Math.max(1, a.rowSpan || 1) - 1;
         }));
     }
@@ -791,31 +797,34 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
 
     function bootstrapRowsHtml(cls){
         const gutter = $('cmBootstrapGutter')?.value || 'g-3';
-        const hasThemeBootstrap = $('cmThemeHasBootstrap')?.checked;
-        const byRow = {};
-        areas.forEach(a=>{
-            const row = a.row || 1;
-            if (!byRow[row]) byRow[row] = [];
-            byRow[row].push(a);
-        });
-        const rows = Object.keys(byRow).map(Number).sort((a,b)=>a-b);
-        let itemIndex = 0;
-        const parts = [];
-        rows.forEach((rowNum, rowIndex)=>{
-            if (rowIndex > 0) {
-                parts.push('<div class="' + (hasThemeBootstrap ? 'w-100 ' : '') + cls + '__row-break" aria-hidden="true"></div>');
+        const packedRows = [];
+        const sorted = areas.slice().sort((a,b)=>((a.row||1)-(b.row||1)) || ((a.col||1)-(b.col||1)));
+        sorted.forEach(a=>{
+            const span = a.full ? 12 : clamp(a.span || 12, 1, 12);
+            const col = a.full ? 1 : clamp(a.col || 1, 1, Math.max(1, 12 - span + 1));
+            let target = 0;
+            for (; target < packedRows.length; target++) {
+                const overlaps = packedRows[target].some(item => !(col + span - 1 < item.col || item.col + item.span - 1 < col));
+                if (!overlaps) break;
             }
-            byRow[rowNum].slice().sort((a,b)=>(a.col||1)-(b.col||1)).forEach(a=>{
+            if (!packedRows[target]) packedRows[target] = [];
+            packedRows[target].push({ a, col, span });
+        });
+        let itemIndex = 0;
+        const rowHtml = packedRows.map(rowItems=>{
+            const cols = rowItems.slice().sort((x,y)=>x.col-y.col).map(item=>{
+                const a = item.a;
                 itemIndex++;
                 const colClass = cls + '__item ' + cls + '__item--' + itemIndex + ' ' + bootstrapColClasses(a);
                 let style = '';
                 if (a.minHeight) style += 'min-height:' + a.minHeight + ';';
                 const styleAttr = style ? ' style="'+style+'"' : '';
                 const idAttr = a.id ? ' id="'+esc(cleanId(a.id))+'"' : '';
-                parts.push('<div class="'+colClass+'"'+idAttr+styleAttr+'>\n'+indent(areaBlock(a.name),4)+'\n</div>');
+                return '<div class="'+colClass+'"'+idAttr+styleAttr+'>\n'+indent(areaBlock(a.name),4)+'\n</div>';
             });
+            return '<div class="row '+gutter+'">\n'+indent(cols.join('\n'),4)+'\n</div>';
         });
-        return '<div class="row '+gutter+'">\n'+indent(parts.join('\n'),4)+'\n</div>';
+        return rowHtml.join('\n');
     }
 
     function buildBootstrapScopedCssPreview(cls){
@@ -891,6 +900,96 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     function boundsOverlap(b1, b2){
         return b1.colStart <= b2.colEnd && b2.colStart <= b1.colEnd
             && b1.rowStart <= b2.rowEnd && b2.rowStart <= b1.rowEnd;
+    }
+
+    function cssAreaBounds(a, viewport){
+        const cols = previewColCountForTier(viewport);
+        const layout = effectiveLayoutForTier(a, viewport);
+        const row = viewport === 'desktop'
+            ? (a.row || 1)
+            : (viewport === 'tablet' ? (a.tabletRow || a.row || 1) : (a.mobileRow || a.row || 1));
+        const rowSpan = Math.max(1, a.rowSpan || 1);
+        return {
+            colStart: clamp(layout.col, 1, Math.max(1, cols)),
+            colEnd: clamp(layout.col + Math.max(1, layout.span) - 1, 1, Math.max(1, cols)),
+            rowStart: Math.max(1, row),
+            rowEnd: Math.max(1, row) + rowSpan - 1
+        };
+    }
+
+    function wouldCssViewportOverlap(viewport, excludeIndex, col, span, row, rowSpan, full){
+        if (isBootstrap()) return false;
+        const cols = previewColCountForTier(viewport);
+        const bounds = {
+            colStart: full ? 1 : col,
+            colEnd: full ? cols : col + Math.max(1, span) - 1,
+            rowStart: Math.max(1, row),
+            rowEnd: Math.max(1, row) + Math.max(1, rowSpan) - 1
+        };
+        for (let i = 0; i < areas.length; i++) {
+            if (i === excludeIndex) continue;
+            if (boundsOverlap(bounds, cssAreaBounds(areas[i], viewport))) return true;
+        }
+        return false;
+    }
+
+    function findFreeCssViewportPlacement(viewport, span, rowSpan, excludeIndex, preferredCol, startRow){
+        const cols = previewColCountForTier(viewport);
+        span = clamp(Math.max(1, span), 1, cols);
+        rowSpan = Math.max(1, rowSpan || 1);
+        const maxRowAtViewport = areas.length
+            ? Math.max(...areas.map(a => cssAreaBounds(a, viewport).rowEnd))
+            : 0;
+        const maxScan = Math.max(maxRowAtViewport + 8, 12);
+        const rowStart = Math.max(1, startRow || 1);
+        const preferred = clamp(preferredCol || 1, 1, Math.max(1, cols - span + 1));
+        for (let row = rowStart; row <= maxScan; row++) {
+            if (!wouldCssViewportOverlap(viewport, excludeIndex, preferred, span, row, rowSpan, span >= cols)) {
+                return { col: preferred, row };
+            }
+            for (let col = 1; col <= cols - span + 1; col++) {
+                if (!wouldCssViewportOverlap(viewport, excludeIndex, col, span, row, rowSpan, span >= cols)) {
+                    return { col, row };
+                }
+            }
+        }
+        return { col: 1, row: maxScan };
+    }
+
+    function normalizeCssViewport(viewport){
+        if (isBootstrap()) return;
+        for (let i = 0; i < areas.length; i++) {
+            const a = areas[i];
+            const layout = effectiveLayoutForTier(a, viewport);
+            const row = viewport === 'desktop'
+                ? (a.row || 1)
+                : (viewport === 'tablet' ? (a.tabletRow || a.row || 1) : (a.mobileRow || a.row || 1));
+            const rowSpan = Math.max(1, a.rowSpan || 1);
+            if (!wouldCssViewportOverlap(viewport, i, layout.col, layout.span, row, rowSpan, layout.full)) {
+                continue;
+            }
+            const free = findFreeCssViewportPlacement(viewport, layout.span, rowSpan, i, layout.col, row);
+            if (viewport === 'desktop') {
+                a.col = free.col;
+                a.row = free.row;
+            } else if (viewport === 'tablet') {
+                a.tabletCol = free.col;
+                a.tabletSpan = layout.span;
+                a.tabletRow = free.row;
+            } else {
+                a.mobileCol = free.col;
+                a.mobileSpan = layout.span;
+                a.mobileStack = layout.full;
+                a.mobileRow = free.row;
+            }
+        }
+    }
+
+    function normalizeCssLayout(){
+        if (isBootstrap()) return;
+        normalizeCssViewport('desktop');
+        normalizeCssViewport('tablet');
+        normalizeCssViewport('mobile');
     }
 
     function bootstrapAreaBounds(a, viewport){
@@ -1001,9 +1100,12 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     }
 
     function tryBootstrapGeometry(index, col, span, row, rowSpan, full, viewport){
-        if (!isBootstrap()) return true;
-        viewport = viewport || previewViewport;
-        return !wouldBootstrapViewportOverlap(viewport, index, col, span, row, full);
+        viewport = viewport || previewTier();
+        if (isBootstrap()) {
+            return !wouldBootstrapViewportOverlap(viewport, index, col, span, row, full);
+        }
+        const areaRowSpan = Math.max(1, rowSpan || (areas[index]?.rowSpan || 1));
+        return !wouldCssViewportOverlap(viewport, index, col, span, row, areaRowSpan, full);
     }
 
     function normalizeBootstrapLayout(){
@@ -1018,10 +1120,18 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         });
     }
 
+    function normalizeLayout(){
+        if (isBootstrap()) {
+            normalizeBootstrapLayout();
+            return;
+        }
+        normalizeCssLayout();
+    }
+
     function gridMetrics(){
         const tiles = $('cmTiles');
         const rect = tiles.getBoundingClientRect();
-        const cols = previewViewport === 'desktop' ? colCount() : previewColCount();
+        const cols = previewTier() === 'desktop' ? colCount() : previewColCount();
         return { rect, colW: rect.width / Math.max(1, cols), rowH: ROW_H, cols };
     }
 
@@ -1090,7 +1200,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         if(!placement){
             placement = { col: a.col, span: a.span, row: a.row, rowSpan: a.rowSpan || 1, gridColumn: a.gridColumn || '', gridRow: a.gridRow || '' };
         }
-        if(previewViewport === 'desktop' && a.gridColumn){
+        if(previewTier() === 'desktop' && a.gridColumn){
             tile.style.gridColumn = a.gridColumn;
             tile.style.removeProperty('--col-start');
             tile.style.removeProperty('--span');
@@ -1114,7 +1224,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
 
     function prepareViewportResize(a){
         const layout = effectiveLayout(a);
-        if(previewViewport === 'tablet'){
+        if(previewTier() === 'tablet'){
             if(a.tabletSpan === null || a.tabletSpan === '' || a.tabletSpan === undefined){
                 a.tabletSpan = layout.span;
             }
@@ -1122,7 +1232,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
                 a.tabletCol = layout.col;
             }
         }
-        if(previewViewport === 'mobile'){
+        if(previewTier() === 'mobile'){
             if(a.mobileCol === null || a.mobileCol === '' || a.mobileCol === undefined){
                 a.mobileCol = layout.col;
             }
@@ -1138,7 +1248,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
 
     function prepareViewportMove(a){
         const layout = effectiveLayout(a);
-        if(previewViewport === 'tablet'){
+        if(previewTier() === 'tablet'){
             if(a.tabletSpan === null || a.tabletSpan === '' || a.tabletSpan === undefined){
                 a.tabletSpan = layout.span;
             }
@@ -1149,7 +1259,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
                 a.tabletRow = a.row;
             }
         }
-        if(previewViewport === 'mobile'){
+        if(previewTier() === 'mobile'){
             if(a.mobileStack === false){
                 if(a.mobileSpan === null || a.mobileSpan === '' || a.mobileSpan === undefined){
                     a.mobileSpan = layout.span;
@@ -1187,7 +1297,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     }
 
     function buildColLines(){
-        const cols = previewViewport === 'desktop' ? colCount() : previewColCount();
+        const cols = previewTier() === 'desktop' ? colCount() : previewColCount();
         $('cmColLines').style.gridTemplateColumns = previewGridColumnsCss();
         $('cmColLines').innerHTML = Array(cols).fill('<span></span>').join('');
     }
@@ -1202,11 +1312,11 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         const rowSpan = p ? p.rowSpan : (a.rowSpan || 1);
         if(rowSpan > 1) meta += ' · row-span '+rowSpan;
         if(a.id) meta += ' · #'+a.id;
-        if(a.gridColumn && previewViewport === 'desktop') meta += ' · '+a.gridColumn;
+        if(a.gridColumn && previewTier() === 'desktop') meta += ' · '+a.gridColumn;
         if(a.minHeight) meta += ' · min-h '+a.minHeight;
-        if(previewViewport !== 'desktop'){
+        if(previewTier() !== 'desktop'){
             const r = areaResponsiveSpans(a);
-            meta += ' · '+previewViewport+' span '+r[previewViewport];
+            meta += ' · '+previewTier()+' span '+r[previewTier()];
         }
         return meta;
     }
@@ -1242,7 +1352,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     }
 
     function renderTiles(){
-        if (isBootstrap()) normalizeBootstrapLayout();
+        normalizeLayout();
         const gap = isBootstrap() ? bootstrapGutterGap() : 'var(--cm-theme-gap, 1rem)';
         $('cmTiles').style.setProperty('--cm-gap', gap);
         const sideMargin = (!isBootstrap() && ($('cmSideMargin')?.value || '').trim()) || '';
@@ -1258,7 +1368,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         const previewPlacements = computePreviewPlacements();
         $('cmTiles').innerHTML = areas.map((a,i)=>{
             const p = previewPlacements[i];
-            const colStyle = (previewViewport === 'desktop' && a.gridColumn)
+            const colStyle = (previewTier() === 'desktop' && a.gridColumn)
                 ? ('grid-column:'+a.gridColumn+';')
                 : (p.gridColumn ? ('grid-column:'+p.gridColumn+';') : ('--col-start:'+p.col+';--span:'+p.span+';'));
             const rowStyle = p.gridRow || (p.rowSpan > 1 ? (p.row + ' / span ' + p.rowSpan) : String(p.row));
@@ -1310,7 +1420,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         $('cmSelId').value = a.id || '';
         $('cmSelCol').value = a.full ? 1 : a.col;
         $('cmSelSpan').value = a.full ? colCount() : a.span;
-        $('cmSelRow').value = previewViewport === 'tablet' ? a.tabletRow : (previewViewport === 'mobile' ? a.mobileRow : a.row);
+        $('cmSelRow').value = previewTier() === 'tablet' ? a.tabletRow : (previewTier() === 'mobile' ? a.mobileRow : a.row);
         $('cmSelRowSpan').value = a.rowSpan || 1;
         $('cmSelGridCol').value = a.gridColumn || '';
         $('cmSelGridRow').value = a.gridRow || '';
@@ -1529,7 +1639,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
             }));
             selected = 0;
         }
-        if (isBootstrap()) normalizeBootstrapLayout();
+        normalizeLayout();
         renderTracks();
         renderTiles();
     }
@@ -1594,7 +1704,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         e.preventDefault();
         selected = parseInt(tile.dataset.i,10);
         const a = areas[selected];
-        if(previewViewport === 'desktop' && a.full && !isBootstrap()) {
+        if(previewTier() === 'desktop' && a.full && !isBootstrap()) {
             syncSelectionPanel();
             renderTiles();
             return;
@@ -1602,7 +1712,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         const layout = prepareViewportMove(a);
         drag = {
             type:'move',
-            viewport: previewViewport,
+            viewport: previewTier(),
             i:selected,
             startX:e.clientX,
             startY:e.clientY,
@@ -1732,7 +1842,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         if(selected < 0 || !areas[selected] || areas[selected].full) return;
         const col = clamp(parseInt(e.target.value,10)||1,1,colCount());
         const a = areas[selected];
-        if (previewViewport === 'tablet') {
+        if (previewTier() === 'tablet') {
             const row = a.tabletRow || a.row || 1;
             const span = a.tabletSpan != null && a.tabletSpan !== '' ? a.tabletSpan : a.span;
             if (!isBootstrap() || tryBootstrapGeometry(selected, col, span, row, 1, false, 'tablet')) {
@@ -1741,7 +1851,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
             } else e.target.value = a.tabletCol ?? a.col;
             return;
         }
-        if (previewViewport === 'mobile') {
+        if (previewTier() === 'mobile') {
             const row = a.mobileRow || a.row || 1;
             const span = a.mobileSpan != null && a.mobileSpan !== '' ? a.mobileSpan : a.span;
             if (!isBootstrap() || tryBootstrapGeometry(selected, col, span, row, 1, false, 'mobile')) {
@@ -1761,7 +1871,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         if(selected < 0 || !areas[selected] || areas[selected].full) return;
         const span = clamp(parseInt(e.target.value,10)||1,1,colCount());
         const a = areas[selected];
-        if (previewViewport === 'tablet') {
+        if (previewTier() === 'tablet') {
             const row = a.tabletRow || a.row || 1;
             const col = a.tabletCol ?? a.col;
             if (!isBootstrap() || tryBootstrapGeometry(selected, col, span, row, 1, false, 'tablet')) {
@@ -1770,7 +1880,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
             } else e.target.value = a.tabletSpan ?? a.span;
             return;
         }
-        if (previewViewport === 'mobile') {
+        if (previewTier() === 'mobile') {
             const row = a.mobileRow || a.row || 1;
             const col = a.mobileCol ?? 1;
             if (!isBootstrap() || tryBootstrapGeometry(selected, col, span, row, 1, span >= colCount(), 'mobile')) {
@@ -1791,7 +1901,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
         if(selected < 0 || !areas[selected]) return;
         const v = Math.max(1,parseInt(e.target.value,10)||1);
         const a = areas[selected];
-        if (previewViewport === 'tablet') {
+        if (previewTier() === 'tablet') {
             const col = a.tabletCol ?? a.col;
             const span = a.tabletSpan != null && a.tabletSpan !== '' ? a.tabletSpan : a.span;
             if (!isBootstrap() || tryBootstrapGeometry(selected, col, span, v, 1, !!a.full, 'tablet')) {
@@ -1800,7 +1910,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
             } else e.target.value = a.tabletRow;
             return;
         }
-        if (previewViewport === 'mobile') {
+        if (previewTier() === 'mobile') {
             const col = a.mobileCol ?? 1;
             const span = a.mobileSpan != null && a.mobileSpan !== '' ? a.mobileSpan : a.span;
             const full = isMobileStacked(a) || span >= colCount();
@@ -1827,7 +1937,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
     $('cmSelFull').addEventListener('change', e=>{
         if(selected < 0 || !areas[selected]) return;
         const full = e.target.checked;
-        if (!full || tryBootstrapGeometry(selected, 1, colCount(), areas[selected].row, 1, true, previewViewport)) {
+        if (!full || tryBootstrapGeometry(selected, 1, colCount(), areas[selected].row, 1, true, previewTier())) {
             areas[selected].full = full;
             if(full){ areas[selected].col = 1; areas[selected].span = colCount(); }
             renderTiles();
@@ -1881,7 +1991,7 @@ textarea.cm-code:focus{outline:2px solid var(--cm-accent);outline-offset:-2px}
 
     document.querySelectorAll('.cm-viewport-bar [data-viewport]').forEach(btn=>{
         btn.addEventListener('click', ()=>{
-            previewViewport = btn.dataset.viewport || 'desktop';
+            previewViewport = btn.dataset.viewport || 'lg';
             document.querySelectorAll('.cm-viewport-bar [data-viewport]').forEach(b=>b.classList.toggle('active', b === btn));
             renderTiles();
         });
